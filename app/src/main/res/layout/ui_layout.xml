@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:text="请开始准备好你的账号密码，进行登录。"
         android:layout_marginTop="20dp"
-        android:textSize="20dp"/>
+        android:textSize="15dp"/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
