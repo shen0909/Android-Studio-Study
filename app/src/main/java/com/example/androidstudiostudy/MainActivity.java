@@ -16,7 +16,8 @@ public class MainActivity extends AppCompatActivity {
         // 设置内容布局(视图)
         // setContentView 要求传入 布局id
 //        setContentView(R.layout.activity_main);
-        setContentView(R.layout.chatting_layout);
+//        setContentView(R.layout.chatting_layout);
+        setContentView(R.layout.ui_layout);
 
         /* 用代码定义布局*/
        /* // 1.定义布局
