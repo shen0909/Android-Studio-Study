@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="match_parent"
     android:gravity="center"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 <!--共有属性：
     margin: 外边距，控件的外部边缘距离其父容器边缘的距离
@@ -20,7 +20,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="请开始准备好你的账号密码，进行登录。"
+        android:text="请准备好你的账号密码，开始进行登录"
         android:layout_marginTop="20dp"
         android:textSize="20dp"/>
     <ImageView
@@ -28,12 +28,25 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:src="@mipmap/ic_launcher_round"/>
+    <!-- EditText 输入框
+        android:inputType="number" 输入类型
+            number 只能输入正整数，不可以是小数
+                numberSigned 整数
+                numberDecimal 小数
+                numberDecimal | numberSigned 用竖线连接，说明什么类型都可以
+            textPassword 输入的内容加密
+        android:maxLength="12" 限制输入框的最大长度
+     -->
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="20dp"
+        android:background="@color/design_default_color_secondary"
+        android:gravity="center"
+        android:inputType="number"
+        android:maxLength="12"
         android:hint="账号"/>
 
     <EditText
@@ -42,20 +55,33 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="20dp"
-        android:hint="账号"/>
+        android:gravity="center_horizontal"
+        android:background="@color/design_default_color_secondary"
+        android:inputType="textPassword"
+        android:hint="密码"/>
+    <!-- 为什么这两个EditText 设置和不设置background ,高度不一样
+         因为当你设置了EditText的background属性时，它会覆盖默认的背景样式，可能会导致高度发生变化。
+          1.可以尝试调整background的样式或者使用padding属性来调整EditText的高度，以使它们保持一致。
+          2.可以尝试使用固定高度的方式来确保它们的高度一致。-->
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="20dp"
-        android:hint="账号"/>
+        android:gravity="center_horizontal"
+        android:background="@color/design_default_color_secondary"
+        android:inputType="phone"
+        android:hint="手机"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="20dp"
+        android:padding="5dp"
+        android:inputType="numberDecimal|numberSigned"
+        android:textAlignment="center"
         android:hint="账号"/>
     <Button
         android:layout_width="200dp"
