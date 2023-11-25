@@ -18,6 +18,7 @@ public class ProgressBarActivyty extends AppCompatActivity {
                 for (int i = 1; i <= 100 ; i++) {
                     progressBar1.setProgress(i);
                     try {
+                        // 休眠一下
                         Thread.sleep(30);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
