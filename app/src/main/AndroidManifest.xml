@@ -16,10 +16,13 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
+            android:name=".ButtonActivity"
+            android:exported="false" />
+        <activity
             android:name=".TextActivity"
             android:exported="false" />
         <activity
-            android:name=".ButtonActivity"
+            android:name=".ProgressBarActivyty"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

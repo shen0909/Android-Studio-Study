@@ -1,7 +1,6 @@
 package com.example.androidstudiostudy;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
@@ -60,7 +59,6 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
             Log.e("xml_viewId4","====点击btn_4=====");
         }else if(view.getId() == R.id.btn5){
             Log.e("xml_viewId5","====点击btn_5=====");
-
         }
     }
 
