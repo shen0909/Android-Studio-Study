@@ -23,11 +23,27 @@
         android:text="请准备好你的账号密码，开始进行登录"
         android:layout_marginTop="20dp"
         android:textSize="20dp"/>
+
+    <!-- ImageView
+    android:src="@mipmap/ic_launcher_round" 指定前景图片资源，保持自身的比例，使图片不会变形
+    android:background="@mipmap/ic_launcher_round"/> 设置背景，图片可能会变形
+      -->
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:src="@mipmap/ic_launcher_round"/>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="190dp"
+        android:layout_marginTop="20dp"
+        android:background="@mipmap/ic_launcher_round"/>
+    <!-- ImageButton 一个可以带前景图片的按钮-->
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"/>
     <!-- EditText 输入框
         android:inputType="number" 输入类型
             number 只能输入正整数，不可以是小数
