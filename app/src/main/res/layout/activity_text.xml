@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TextActivity">
+    <!--
+        设置字体大小：android:textSize="20sp" 用sp
+        设置颜色：android:textColor="#00ffff"
+        设置倍距(行距)：android:lineSpacingMultiplier="2"
+        设置具体行距：android:lineSpacingExtra="15sp" 与倍距只可取其一
+        过长文本的处理方式：
+            1.在外面添加滚动条，注意，一个滚动条里面只能添加一个子控件
+            2.省略过长部分，取消换行部分
+    -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="20sp"
+        android:textColor="#00ffff"
+        android:lineSpacingMultiplier="2"
+        android:text="@string/long_text"/>
+</ScrollView>

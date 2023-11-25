@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--
+        设置字体大小：android:textSize="20sp" 用sp
+        设置颜色：android:textColor="#00ffff"
+        设置倍距(行距)：android:lineSpacingMultiplier="2"
+        设置具体行距：android:lineSpacingExtra="15sp" 与倍距只可取其一
+        过长文本的处理方式：
+            1.在外面添加滚动条，注意，一个滚动条里面只能添加一个子控件
+            2.省略过长部分，取消换行部分
+        省略过长部分：
+            1.android:singleLine="true" 后面加省略号  android:ellipsize="middle" 设置省略号的位置
+            2.android:lines="1"  设置单行  后面加句号
+
+        跑马灯,一个页面只有一个跑马灯生效，因为它需要获取焦点
+            android:ellipsize="marquee" 设置跑马灯形式
+            android:focusable="true" 设置可以获取焦点
+            android:focusableInTouchMode="true" 设置在触摸时获取焦点
+            android:marqueeRepeatLimit="marquee_forever" 设置跑马灯时长
+
+        -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="20sp"
+        android:textColor="#00ffff"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:text="@string/long_text"/>
+
+</LinearLayout>
