@@ -56,19 +56,16 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
     public void myClick(View view) {
         // 常规
         // Log.e("xml","====在xml布局文件中绑定添加点击事件属性=====");
-        switch (view.getId()){
-            case R.id.btn4:
-                Log.e("xml_viewId4","====点击btn_4=====");
-                break;
-            case R.id.btn5:
-                Log.e("xml_viewId5","====点击btn_5=====");
-                break;
+        if(view.getId() == R.id.btn4){
+            Log.e("xml_viewId4","====点击btn_4=====");
+        }else if(view.getId() == R.id.btn5){
+            Log.e("xml_viewId5","====点击btn_5=====");
+
         }
     }
 
     // 自定义一个 继承 View.OnClickListener 接口的类，实现里面的方法
     class MyClickListener implements View.OnClickListener{
-
         @Override
         public void onClick(View v) {
             // 在控制台输入语句 Log.e 输入错误类型，也就是红色语句，不管错误与否
