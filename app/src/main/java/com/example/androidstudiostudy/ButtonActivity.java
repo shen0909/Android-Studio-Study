@@ -66,7 +66,7 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
 
     // 页面跳转方法
     public void jumoActivity(View view) {
-        Intent intent = new Intent(ButtonActivity.this,MainActivity.class);
+        Intent intent = new Intent(ButtonActivity.this,ConstraintActivity.class);
         startActivity(intent);
     }
 

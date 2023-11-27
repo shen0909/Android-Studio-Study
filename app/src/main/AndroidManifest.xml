@@ -17,10 +17,14 @@
         tools:targetApi="31" >
 
         <activity
+            android:name=".ConstraintActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".checkBoxActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ButtonActivity"
             android:exported="false" />
         <activity
             android:name=".ProgressBarActivyty"
@@ -31,8 +35,12 @@
         <activity
             android:name=".TextActivity"
             android:exported="false" />
+        <!--
+            android:launchMode="standard" 标准启动模式
+        -->
         <activity
-            android:name=".ButtonActivity"
+            android:launchMode="standard"
+            android:name=".MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

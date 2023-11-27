@@ -2,6 +2,7 @@ package com.example.androidstudiostudy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -18,10 +19,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         // 设置内容布局(视图)
         // setContentView 要求传入 布局id
-        // setContentView(R.layout.activity_main);
         // setContentView(R.layout.chatting_layout);
-//        setContentView(R.layout.activity_main);
-        setContentView(R.layout.constraint_layout);
+        setContentView(R.layout.activity_main);
 
         /* 用代码定义布局*/
        /* // 1.定义布局
@@ -71,5 +70,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             }.start();
         }
+    }
+
+    public void jumpe(View view) {
+        Intent intent = new Intent(MainActivity.this,ButtonActivity.class);
+        startActivity(intent);
     }
 }
