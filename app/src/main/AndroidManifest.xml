@@ -39,7 +39,7 @@
             android:launchMode="standard" 标准启动模式
         -->
         <activity
-            android:launchMode="standard"
+            android:launchMode="singleTop"
             android:name=".MainActivity"
             android:exported="true" >
             <intent-filter>
