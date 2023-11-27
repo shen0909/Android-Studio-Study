@@ -1,9 +1,12 @@
 package com.example.androidstudiostudy;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -30,6 +33,24 @@ public class MainActivity extends AppCompatActivity {
         // 3.设置背景颜色
         linearLayout.setBackgroundColor(Color.GREEN);
         setContentView(linearLayout);*/
+    }
+    // 创建optionMenu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // 加载菜单资源
+        getMenuInflater().inflate(R.menu.option,menu);
+        return true;
+    }
+
+    // optionMenu 的选中方法
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.m1) {
+            Toast.makeText(this,item.getTitle(),Toast.LENGTH_SHORT).show();
+        } else if (item.getItemId() == R.id.m2) {
+            Toast.makeText(this,item.getTitle(),Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     // 注册方法
@@ -76,4 +97,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this,ButtonActivity.class);
         startActivity(intent);
     }
+
 }
