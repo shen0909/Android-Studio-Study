@@ -1,6 +1,8 @@
 package com.example.androidstudiostudy;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
@@ -62,8 +64,14 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+    // 页面跳转方法
+    public void jumoActivity(View view) {
+        Intent intent = new Intent(ButtonActivity.this,MainActivity.class);
+        startActivity(intent);
+    }
+
     // 自定义一个 继承 View.OnClickListener 接口的类，实现里面的方法
-    class MyClickListener implements View.OnClickListener{
+    static class MyClickListener implements View.OnClickListener{
         @Override
         public void onClick(View v) {
             // 在控制台输入语句 Log.e 输入错误类型，也就是红色语句，不管错误与否

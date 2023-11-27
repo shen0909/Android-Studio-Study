@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" >
 
+    <!--application 指应用程序
+        <intent-filter> 主程序入口，当有多个时，该应用程序有多个入口，一般会只选择一个入口
+    -->
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -23,13 +26,13 @@
             android:name=".ProgressBarActivyty"
             android:exported="false" />
         <activity
-            android:name=".ButtonActivity"
+            android:name=".RadioButtonActivity"
             android:exported="false" />
         <activity
             android:name=".TextActivity"
             android:exported="false" />
         <activity
-            android:name=".RadioButtonActivity"
+            android:name=".ButtonActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
