@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".RadioButtonActivity">
     <!-- 单选控件 在一个 RadioGroup 中只能选中一个 -->
     <RadioGroup
@@ -30,5 +31,16 @@
             android:layout_height="wrap_content"
             android:text="444"/>
     </RadioGroup>
+
+    <ToggleButton
+        android:id="@+id/toggleButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textOff="关闭了"
+        android:textOn="打开了"
+        android:checked="true"
+        android:text="ToggleButton" />
+
 
 </LinearLayout>
