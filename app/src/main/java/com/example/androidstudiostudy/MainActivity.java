@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void jumpe(View view) {
-        Intent intent = new Intent(MainActivity.this,MainActivity.class);
+        Intent intent = new Intent(MainActivity.this,ButtonActivity.class);
         startActivity(intent);
     }
 }

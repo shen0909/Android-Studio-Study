@@ -79,6 +79,7 @@
         android:layout_height="60dp"
         android:text="一字千金红包"
         android:textSize="22sp"
+        android:onClick="jump"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
