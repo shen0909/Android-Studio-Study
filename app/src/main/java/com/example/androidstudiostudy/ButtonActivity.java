@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.PopupWindow;
 import android.widget.Toast;
@@ -169,6 +170,43 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
         else if (id == R.id.popw_btn) {
             showPopupWindow(view);
         }
+        // 点击含有数组适配器的弹窗
+        else if (id == R.id.adpter_btn) {
+            showArrayDialog();
+        }
+    }
+
+    // 包含数组适配器的对话框
+    private void showArrayDialog() {
+        final String[] items= {"java","c++","android","flutter","dart"};
+        /* 创建一个对话框构造对象 AlertDialog.Builder*/
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        /* 创建一个数组适配器 - 这里使用的是第三个构造方法
+         * 参数1 Context：环境上下文
+         * 参数2 resource：布局资源索引 每一项数据显示的样式布局 android.R.layout.xx 要求该布局资源的根元素必须是TextView
+         * 参数3 objects：数据源*/
+        // ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line,items);
+
+        /* R.layout.array_item_layout 布局是自己设置的布局，根元素不是TextView，因此出错，所以此时需要另一种构造方法
+         * 参数1 Context：环境上下文
+         * 参数2 resource：布局资源索引
+         * 参数3 int textViewResourceId：指定数据中文本需要放在布局中的文本控件的id
+         * 参数4 objects：数据源*/
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.array_item_layout,R.id.arry_tx,items);
+        builder.setTitle("请选择")
+                /* .setAdapter() 设置适配器
+                 * 参数1 - ListAdapter 适配器对象(对数据显示样式的规则制定器)：The ListAdapter to supply the list of items
+                 * 参数2 - OnClickListener 监听器 (可给可不给，不给则设为null)*/
+               .setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                   @Override
+                   /*int which 当前点击的item索引*/
+                   public void onClick(DialogInterface dialog, int which) {
+                       Toast.makeText(ButtonActivity.this,items[which],Toast.LENGTH_SHORT).show();
+                   }
+               })
+               .show();
+
     }
 
     //设置PopupWindow
