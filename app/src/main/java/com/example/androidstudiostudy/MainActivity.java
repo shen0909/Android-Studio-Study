@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SubMenu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -60,14 +61,24 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // 加载菜单资源
-        getMenuInflater().inflate(R.menu.option,menu);
+        /* 通过xml设计 */
+        // getMenuInflater().inflate(R.menu.option,menu);
+        /* 纯代码设计
+         * Menu 类 SubMenu 子菜单类*/
+        /* Menu 类参数：组id 菜单项 id 菜单项序号 菜单项名称 */
+        menu.add(1,1,3,"菜单1");
+        menu.add(1,2,2,"菜单2");
+        SubMenu subMenu = menu.addSubMenu(1,3,1,"子菜单的主菜单");
+        subMenu.add(2,22,1,"子菜单2");
+        subMenu.add(2,11,2,"子菜单1");
         return true;
     }
 
     // optionMenu 的选中方法
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.m1) {
+//        if (item.getItemId() == R.id.m1) {
+        if (item.getItemId() == 1) {
             Toast.makeText(this,item.getTitle(),Toast.LENGTH_SHORT).show();
         } else if (item.getItemId() == R.id.m2) {
             Toast.makeText(this,item.getTitle(),Toast.LENGTH_SHORT).show();
