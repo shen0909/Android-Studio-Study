@@ -2,9 +2,9 @@ package com.example.androidstudiostudy;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,7 +33,29 @@ public class MainActivity extends AppCompatActivity {
         // 3.设置背景颜色
         linearLayout.setBackgroundColor(Color.GREEN);
         setContentView(linearLayout);*/
+
+        // ContextMenu 上下文菜单的使用
+        // 1.注册
+        registerForContextMenu(findViewById(R.id.ctx_btn));
+        // 2.创建 - 覆盖父类的 onCreateContextMenu 方法
+        // 3。菜单项的操作 - 覆盖父类的 onContextItemSelected 方法
     }
+
+    // 2.创建contextMenu
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        getMenuInflater().inflate(R.menu.context,menu);
+    }
+
+    // 3.contextMenu 菜单项选项操作
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+
+        int itemId = item.getItemId();
+        Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT).show();
+        return super.onContextItemSelected(item);
+    }
+
     // 创建optionMenu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

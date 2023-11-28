@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/ctx1"
+        android:title="上下文菜单item1" />
+    <item
+        android:id="@+id/ctx2"
+        android:title="上下文菜单item2" />
+    <item
+        android:id="@+id/ctx3"
+        android:title="上下文菜单item3" />
+    <item
+        android:id="@+id/ctx4"
+        android:title="上下文菜单item4" />
+    <item
+        android:title="上下文菜单item5">
+        <menu>
+            <item
+                android:id="@+id/z_ctx1"
+                android:title="子菜单item1" />
+            <item
+                android:id="@+id/z_ctx2"
+                android:title="子菜单item2" />
+            <item
+                android:id="@+id/z_ctx3"
+                android:title="子菜单item3" />
+        </menu>
+    </item>
+</menu>
