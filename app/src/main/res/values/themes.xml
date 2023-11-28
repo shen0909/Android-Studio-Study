@@ -17,4 +17,12 @@
     <style name="Mydialog" parent="android:style/Theme.Dialog">
         <item name="android:windowNoTitle">true</item>
     </style>
+
+    <!--2.在风格里应用动画 -->
+    <!-- popupStyle 的风格
+         android:windowExitAnimation 窗口进入动画
+     -->
+    <style name="popupStyle">
+        <item name="android:windowExitAnimation"> @anim/popup</item>
+    </style>
 </resources>

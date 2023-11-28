@@ -223,6 +223,13 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
             }
         });
 
+        // 设置弹窗动画
+        /* 1.创建动画资源 -- 先创建文件夹 再创建资源文件
+         * 2.创建风格，应用动画资源
+         * 3.将当前弹窗的的动画风格设置为第2步的风格 */
+        popupWindow.setAnimationStyle(R.style.popupStyle);
+
+
         // 3.显示
         /* View anchor, int xoff, int yoff
          * 参数一 在哪里显示
