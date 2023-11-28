@@ -1,13 +1,15 @@
 package com.example.androidstudiostudy;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ActionMode;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class ButtonActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -41,8 +43,49 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
         Button button3 = findViewById(R.id.btn_3);
         /* setOnClickListener 需要一个 OnClickListener 对象 作为参数，this可以指向本类对象，本类就是一个继承View.OnClickListener 接口的类*/
         button3.setOnClickListener(this);
-
+        // 为按钮设置上下文操作模式
+        //1. 实现接口 ActonMode.CallBack 中不同的回调方法
+        //2. 在View的长按事件中启动上下文操作模式
+        findViewById(R.id.ctx_opbtn).setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                startActionMode(ac);
+                return false;
+            }
+        });
     }
+
+   ActionMode.Callback ac =new ActionMode.Callback(){
+        // 创建：在启动上下文操作模式(startActionMode(Callback))时调用
+       @Override
+       public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+           Log.e("上下文操作模式","--创建--");
+           getMenuInflater().inflate(R.menu.context,menu);
+           return true;
+       }
+
+       // 准备：在创建方法后进行调用
+       @Override
+       public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+           Log.e("上下文操作模式","--准备--");
+           return false;
+       }
+
+       // 菜单项被点击
+       @Override
+       public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+           /* 环境变量此时需要这样是因为这是一个内部类 ButtonActivity.this */
+           Log.e("上下文操作模式","--点击--");
+           Toast.makeText(ButtonActivity.this, item.getTitle(), Toast.LENGTH_SHORT).show();
+           return true;
+       }
+
+       // 结束：上下文操作模式结束时调用
+       @Override
+       public void onDestroyActionMode(ActionMode mode) {
+           Log.e("上下文操作模式","--结束--");
+       }
+   };
 
     // 让当前的activity类继承 View.OnClickListener 接口并实现里面的方法
     @Override
