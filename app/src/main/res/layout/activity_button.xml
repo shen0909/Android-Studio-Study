@@ -86,6 +86,14 @@
             android:layout_marginTop="20dp"
             android:onClick="popAlert"
             android:text="弹出自定义对话框" />
+
+        <Button
+            android:id="@+id/popw_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onClick="popAlert"
+            android:text="PopupWindow 弹窗" />
     </LinearLayout>
 
 
