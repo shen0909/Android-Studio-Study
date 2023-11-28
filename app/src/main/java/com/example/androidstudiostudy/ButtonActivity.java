@@ -1,8 +1,10 @@
 package com.example.androidstudiostudy;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,7 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class ButtonActivity extends AppCompatActivity implements View.OnClickListener{
+public class ButtonActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,7 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("btn_niming_tags","====通过匿名内部类实现点击方法=====");
+                Log.e("btn_niming_tags", "====通过匿名内部类实现点击方法=====");
             }
         });
 
@@ -64,9 +66,9 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
                 // 1.实例化 PopupMenu 对象
                 /* 参数一 上下文环境
                  * 参数二 被锚定的(绑定)的button*/
-                PopupMenu popupMenu = new PopupMenu(ButtonActivity.this,popbtn);
+                PopupMenu popupMenu = new PopupMenu(ButtonActivity.this, popbtn);
                 // 2.加载菜单资源：利用MenuInflater将Menu资源加载到PopMenu.getMenu() 所返回的Menu对象中
-                popupMenu.getMenuInflater().inflate(R.menu.context,popupMenu.getMenu());
+                popupMenu.getMenuInflater().inflate(R.menu.context, popupMenu.getMenu());
                 // 3.菜单子项点击操作
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
@@ -81,42 +83,42 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
         });
     }
 
-   ActionMode.Callback ac =new ActionMode.Callback(){
+    ActionMode.Callback ac = new ActionMode.Callback() {
         // 创建：在启动上下文操作模式(startActionMode(Callback))时调用
-       @Override
-       public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-           Log.e("上下文操作模式","--创建--");
-           getMenuInflater().inflate(R.menu.context,menu);
-           return true;
-       }
+        @Override
+        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+            Log.e("上下文操作模式", "--创建--");
+            getMenuInflater().inflate(R.menu.context, menu);
+            return true;
+        }
 
-       // 准备：在创建方法后进行调用
-       @Override
-       public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-           Log.e("上下文操作模式","--准备--");
-           return false;
-       }
+        // 准备：在创建方法后进行调用
+        @Override
+        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+            Log.e("上下文操作模式", "--准备--");
+            return false;
+        }
 
-       // 菜单项被点击
-       @Override
-       public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-           /* 环境变量此时需要这样是因为这是一个内部类 ButtonActivity.this */
-           Log.e("上下文操作模式","--点击--");
-           Toast.makeText(ButtonActivity.this, item.getTitle(), Toast.LENGTH_SHORT).show();
-           return true;
-       }
+        // 菜单项被点击
+        @Override
+        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+            /* 环境变量此时需要这样是因为这是一个内部类 ButtonActivity.this */
+            Log.e("上下文操作模式", "--点击--");
+            Toast.makeText(ButtonActivity.this, item.getTitle(), Toast.LENGTH_SHORT).show();
+            return true;
+        }
 
-       // 结束：上下文操作模式结束时调用
-       @Override
-       public void onDestroyActionMode(ActionMode mode) {
-           Log.e("上下文操作模式","--结束--");
-       }
-   };
+        // 结束：上下文操作模式结束时调用
+        @Override
+        public void onDestroyActionMode(ActionMode mode) {
+            Log.e("上下文操作模式", "--结束--");
+        }
+    };
 
     // 让当前的activity类继承 View.OnClickListener 接口并实现里面的方法
     @Override
     public void onClick(View v) {
-        Log.e("activity","====通过当前activity实现事件接口=====");
+        Log.e("activity", "====通过当前activity实现事件接口=====");
     }
 
 
@@ -126,25 +128,41 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
     public void myClick(View view) {
         // 常规
         // Log.e("xml","====在xml布局文件中绑定添加点击事件属性=====");
-        if(view.getId() == R.id.btn4){
-            Log.e("xml_viewId4","====点击btn_4=====");
-        }else if(view.getId() == R.id.btn5){
-            Log.e("xml_viewId5","====点击btn_5=====");
+        if (view.getId() == R.id.btn4) {
+            Log.e("xml_viewId4", "====点击btn_4=====");
+        } else if (view.getId() == R.id.btn5) {
+            Log.e("xml_viewId5", "====点击btn_5=====");
         }
     }
 
     // 页面跳转方法
     public void jumoActivity(View view) {
-        Intent intent = new Intent(ButtonActivity.this,ConstraintActivity.class);
+        Intent intent = new Intent(ButtonActivity.this, ConstraintActivity.class);
         startActivity(intent);
     }
 
+    //点击弹出对话框方法
+    public void popAlert(View view) {
+        int id = view.getId();
+        if (id == R.id.alt_btn1) {
+            // 方法一：用构建器创建对话框：先创建对话框再显示
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("提示").setMessage("您确定要退出程序吗？").setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                }
+            }).setNegativeButton("取消", null).show();
+        } else if (id == R.id.alt_btn1) {
+        }
+    }
+
     // 自定义一个 继承 View.OnClickListener 接口的类，实现里面的方法
-    static class MyClickListener implements View.OnClickListener{
+    static class MyClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
             // 在控制台输入语句 Log.e 输入错误类型，也就是红色语句，不管错误与否
-            Log.e("btn_tags","通过自定义内部类实现点击方法");
+            Log.e("btn_tags", "通过自定义内部类实现点击方法");
         }
     }
 }
