@@ -1,6 +1,8 @@
 package com.example.androidstudiostudy;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -51,6 +53,30 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
             public boolean onLongClick(View v) {
                 startActionMode(ac);
                 return false;
+            }
+        });
+
+        // 将弹出式菜单绑定在按钮的点击事件上
+        Button popbtn = findViewById(R.id.pop_btn);
+        popbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 1.实例化 PopupMenu 对象
+                /* 参数一 上下文环境
+                 * 参数二 被锚定的(绑定)的button*/
+                PopupMenu popupMenu = new PopupMenu(ButtonActivity.this,popbtn);
+                // 2.加载菜单资源：利用MenuInflater将Menu资源加载到PopMenu.getMenu() 所返回的Menu对象中
+                popupMenu.getMenuInflater().inflate(R.menu.context,popupMenu.getMenu());
+                // 3.菜单子项点击操作
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        Toast.makeText(ButtonActivity.this, item.getTitle(), Toast.LENGTH_SHORT).show();
+                        return false;
+                    }
+                });
+                // 显示菜单
+                popupMenu.show();
             }
         });
     }
