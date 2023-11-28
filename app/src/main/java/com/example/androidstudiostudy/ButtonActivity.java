@@ -153,7 +153,13 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
                     finish();
                 }
             }).setNegativeButton("取消", null).show();
-        } else if (id == R.id.alt_btn1) {
+        }
+        // 弹出自定义对话框方法
+        else if (id == R.id.alt_btn2) {
+            // 自定义对话框-4.实例化对话框并显示
+            /* 传入当前环境变量和设置的样式id*/
+            MyDialog myDialog = new MyDialog(this,R.style.Mydialog);
+            myDialog.show();
         }
     }
 

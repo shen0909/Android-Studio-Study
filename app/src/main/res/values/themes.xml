@@ -9,4 +9,12 @@
     </style>
 
     <style name="Theme.AndroidStudioStudy" parent="Base.Theme.AndroidStudioStudy" />
+    <!--
+        自定义对话框-2.设置style
+        <item name="android:windowFullscreen">true</item>   要全屏吗？ 对
+        <item name="android:windowNoTitle">true</item> 不要标题吗？ 对
+    -->
+    <style name="Mydialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+    </style>
 </resources>
