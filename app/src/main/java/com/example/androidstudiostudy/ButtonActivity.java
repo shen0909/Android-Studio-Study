@@ -20,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.PopupWindow;
 import android.widget.Toast;
+import com.example.androidstudiostudy.data.Student;
 
 public class ButtonActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -200,6 +201,12 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
         else if (id == R.id.toOpen_comAc) {
             /* 给activity配置action*/
             Intent intentC = new Intent("activityName");
+            // activity传递对象内容
+            // 实例化一个新建的 Student 对象
+            Student student1 = new Student("沈成林",23,200000.999,true);
+            // 参数1：String name - 本次数据的名称
+            // 参数2：@Nullable Serializable value - 序列化数据对象
+            intentC.putExtra("data_object",student1);
             startActivity(intentC);
         }
         // startActivityForResult 带结果返回的方式启动 activity

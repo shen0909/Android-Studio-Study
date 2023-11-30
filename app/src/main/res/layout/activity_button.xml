@@ -125,7 +125,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:onClick="popAlert"
-            android:text="隐式启动-启动普通activity" />
+            android:text="隐式启动-启动普通activity - 传递对象数据" />
 
         <Button
             android:id="@+id/toOpen_AcwithResult"

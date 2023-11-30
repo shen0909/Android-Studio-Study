@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import com.example.androidstudiostudy.data.Student;
 
 public class ActivityLife extends AppCompatActivity {
 
@@ -33,6 +34,13 @@ public class ActivityLife extends AppCompatActivity {
 
         TextView textView = findViewById(R.id.show);
         textView.setText("上一个页面传递是数据"+dataString+dataInt+dataDouble+dataBool);
+
+        // 获取对象数据 - 强转成 Student 对象
+        Student student = (Student) getIntent.getSerializableExtra("data_object");
+
+        TextView textView2 = findViewById(R.id.show2);
+        textView2.setText("上一个页面传递是数据"+student.getName()+student.getAge()+student.getMoney()+student.isCheck());
+
     }
 
     // 启动
