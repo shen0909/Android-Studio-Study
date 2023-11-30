@@ -84,6 +84,13 @@ public class ActivityLife extends AppCompatActivity {
                     .setPositiveButton("确定",null)
                     .show();
         }
+        // 打开界面对话框
+        /* 1.创建一个 activity，和创建意图跳转
+         * 2.在清单文件中设置当前activity的风格为对话框风格*/
+        else if (id == R.id.btt3) {
+            Intent intent2 = new Intent(this,DialogActivity.class);
+            startActivity(intent2);
+        }
 
     }
 }

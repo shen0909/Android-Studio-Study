@@ -22,6 +22,7 @@
         android:onClick="toJump"
         android:text="打开对话框"/>
 
+    <!-- 界面是本质，是一个activity-->
     <Button
         android:id="@+id/btt3"
         android:layout_width="300dp"
