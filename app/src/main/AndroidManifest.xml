@@ -18,7 +18,13 @@
             android:exported="false" />
         <activity
             android:name=".ActivityLife"
-            android:exported="false" />
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="activityName"/>
+                <!-- 此时没有特别用途，分到默认类/组-->
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ConstraintActivity"
             android:exported="false" />
@@ -37,11 +43,16 @@
         <activity
             android:name=".TextActivity"
             android:exported="false" />
-        <!--             android:launchMode="standard" 标准启动模式 -->
+        <!-- android:launchMode="standard" 标准启动模式 -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:launchMode="standard">
+            <!--
+                intent-filter 意图过滤器
+                <action android:name="……" /> 给当前activity起别名，但不能乱起。android.intent.action.MAIN -> 入口activity
+                <category android:name="……" /> 分类
+            -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

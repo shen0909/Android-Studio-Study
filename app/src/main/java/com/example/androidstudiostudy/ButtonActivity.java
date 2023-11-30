@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ActionMode;
@@ -178,6 +179,22 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
         else if (id == R.id.toShow_life) {
             Intent intent = new Intent(this,ActivityLife.class);
             startActivity(intent);
+        }
+        // 隐式启动 - 打开系统activity
+        else if (id == R.id.toOpen_sysAc) {
+            /* 隐式启动的两种构造方法
+             * public Intent(String action, Uri uri)
+             * public Intent(String action)
+             * action：Activity的别名 ，编译阶段无论写什么的都不会报错
+             * uri: Uri对象，打开的路径*/
+            Intent intentS = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.baidu.com"));
+            startActivity(intentS);
+        }
+        // 隐式启动 - 打开普通activity
+        else if (id == R.id.toOpen_comAc) {
+            /* 给activity配置action*/
+            Intent intentC = new Intent("activityName");
+            startActivity(intentC);
         }
     }
 
