@@ -1,7 +1,7 @@
 package com.example.androidstudiostudy;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -71,9 +71,18 @@ public class ActivityLife extends AppCompatActivity {
      * 当点击返回按钮，另一个activity退出时：OnCreate() -> OnStart() -> OnResume()*/
     // 页面跳转方法
     public void toJump(View view) {
-        if (view.getId() == R.id.btt1) {
+        int id = view.getId();
+        if (id== R.id.btt1) {
             Intent intent = new Intent(this,ConstraintActivity.class);
             startActivity(intent);
+        }
+        // 观察打开普通对话框生命周期的变化
+        else if(id == R.id.btt2){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("对话框提示")
+                    .setMessage("请认真观察生命周期的变化")
+                    .setPositiveButton("确定",null)
+                    .show();
         }
 
     }

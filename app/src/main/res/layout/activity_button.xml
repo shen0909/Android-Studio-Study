@@ -102,6 +102,14 @@
             android:layout_marginTop="20dp"
             android:onClick="popAlert"
             android:text="数组适配器 ArrayAdapter" />
+
+        <Button
+            android:id="@+id/toShow_life"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onClick="popAlert"
+            android:text="去观察生命周期" />
     </LinearLayout>
 
 

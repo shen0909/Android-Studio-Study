@@ -174,6 +174,11 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
         else if (id == R.id.adpter_btn) {
             showArrayDialog();
         }
+        // 跳转生命周期页
+        else if (id == R.id.toShow_life) {
+            Intent intent = new Intent(this,ActivityLife.class);
+            startActivity(intent);
+        }
     }
 
     // 包含数组适配器的对话框
