@@ -30,4 +30,12 @@
         android:onClick="toJump"
         android:text="打开界面对话框"/>
 
+    <Button
+        android:id="@+id/back"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:onClick="backRes"
+        android:text="通过startActivityForResult启动activity-返回结果"/>
+
+
 </LinearLayout>

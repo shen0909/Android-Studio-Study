@@ -93,4 +93,14 @@ public class ActivityLife extends AppCompatActivity {
         }
 
     }
+
+    // 通过startActivityForResult启动activity-返回结果
+    public void backRes(View view) {
+        // 设置结果
+        Intent intent = new Intent();  //此时intent不作为跳转使用，而是用来传递返回的数据
+        intent.putExtra("返回的数据","第二个界面返回的是10000000");
+        /*参数1：请求码 参数2：返回的数据*/
+        setResult(RESULT_OK,intent);
+        finish();
+    }
 }

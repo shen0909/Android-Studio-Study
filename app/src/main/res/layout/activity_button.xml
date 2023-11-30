@@ -126,6 +126,14 @@
             android:layout_marginTop="20dp"
             android:onClick="popAlert"
             android:text="隐式启动-启动普通activity" />
+
+        <Button
+            android:id="@+id/toOpen_AcwithResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onClick="popAlert"
+            android:text="带结果返回的方式启动activity" />
     </LinearLayout>
 
 

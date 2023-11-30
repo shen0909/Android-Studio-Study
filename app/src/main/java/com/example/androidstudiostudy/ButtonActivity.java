@@ -1,5 +1,6 @@
 package com.example.androidstudiostudy;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
@@ -146,7 +147,7 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
         startActivity(intent);
     }
 
-    //点击弹出对话框方法
+    //点击弹出对话框按钮之后的按钮方法都在这
     public void popAlert(View view) {
         int id = view.getId();
         // 弹出普通对话框
@@ -195,6 +196,30 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
             /* 给activity配置action*/
             Intent intentC = new Intent("activityName");
             startActivity(intentC);
+        }
+        // startActivityForResult 带结果返回的方式启动 activity
+        else if (id == R.id.toOpen_AcwithResult) {
+            Intent intent = new Intent(this,ActivityLife.class);
+            // 参数2：请求码
+            startActivityForResult(intent,1000);
+        }
+    }
+
+    // 如果通过 startActivityForResult 启动了第二个activity，当第二个activity处理结束后，再回到当前activity时，一定会自动回调 onActivityResult 方法
+    // 在 onActivityResult 方法中我们可以处理第二个activity返回的结果。（如。拍照后得到的照片，从图库中选取的图片）
+    /* 参数1 requestCode：请求码。当有多个 startActivityForResult 时，可以用来判断该结果来自于哪个activity，从而进行什么操作
+     * 参数2 resultCode：结果码 0 = RESULT_CANCEL->取消 | -1 = RESULT_OK  正确处理后返回。判断它是为了判断新开的activity有没有处理完这些事
+     * 参数3 Intent (可以为空)：返回的结果存放在这里。通过 getStringExtra() 获取数据(此时已经知道结果是String类型的数据)*/
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // 判断新开的activity返回的结果
+        /* 当返回结果都是成功时，请求码==1000则进行操作 */
+        if(resultCode == -1){
+            if(requestCode == 1000){
+                assert data != null;
+                Log.e("ActivityWithResults","自动进入onActivityResult requestCode："+requestCode+",resultCode："+resultCode+"，返回的数据"+data.getStringExtra("返回的数据"));
+            }
         }
     }
 
