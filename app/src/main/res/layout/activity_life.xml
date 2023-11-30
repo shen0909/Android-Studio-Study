@@ -8,6 +8,10 @@
     android:gravity="center"
     tools:context=".ActivityLife">
 
+    <TextView
+        android:id="@+id/show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
     <Button
         android:id="@+id/btt1"
         android:layout_width="300dp"

@@ -109,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:onClick="popAlert"
-            android:text="去观察生命周期" />
+            android:text="去观察生命周期-带传递的数据" />
 
         <Button
             android:id="@+id/toOpen_sysAc"

@@ -179,6 +179,11 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
         // 跳转生命周期页
         else if (id == R.id.toShow_life) {
             Intent intent = new Intent(this,ActivityLife.class);
+            // 添加参数
+            intent.putExtra("传递的String类型参数","这是上一个页面传递过来的String类型参数");
+            intent.putExtra("传递的double类型参数",24.99);
+            intent.putExtra("传递的int类型参数",24);
+            intent.putExtra("传递的bool类型参数",false);
             startActivity(intent);
         }
         // 隐式启动 - 打开系统activity

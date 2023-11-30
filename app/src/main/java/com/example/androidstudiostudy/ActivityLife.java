@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 public class ActivityLife extends AppCompatActivity {
 
@@ -22,6 +23,16 @@ public class ActivityLife extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_life);
         Log.e("Life","onCreate--创建");
+
+        // 获取上一个页面传递过来的数据,获取数据时有些需要给出默认值
+        Intent getIntent = getIntent();
+        String dataString = getIntent.getStringExtra("传递的String类型参数");
+        int dataInt = getIntent.getIntExtra("传递的int类型参数",1);
+        double dataDouble = getIntent.getDoubleExtra("传递的double类型参数",2.1);
+        boolean dataBool = getIntent.getBooleanExtra("传递的bool类型参数",true);
+
+        TextView textView = findViewById(R.id.show);
+        textView.setText("上一个页面传递是数据"+dataString+dataInt+dataDouble+dataBool);
     }
 
     // 启动
