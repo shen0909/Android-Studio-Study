@@ -47,5 +47,12 @@
         android:onClick="backRes"
         android:text="通过startActivityForResult启动activity-返回结果"/>
 
+    <Button
+        android:id="@+id/toLook_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toJump"
+        android:text="去看看Fragment" />
+
 
 </LinearLayout>

@@ -116,6 +116,11 @@ public class ActivityLife extends AppCompatActivity {
             Intent intent2 = new Intent(this,DialogActivity.class);
             startActivity(intent2);
         }
+        // 跳转去看fragment
+        else if (id == R.id.toLook_fragment) {
+            Intent intent = new Intent(this, FragmentActivity.class);
+            startActivity(intent);
+        }
 
     }
 
