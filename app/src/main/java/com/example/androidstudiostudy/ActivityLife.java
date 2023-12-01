@@ -38,8 +38,14 @@ public class ActivityLife extends AppCompatActivity {
         // 获取对象数据 - 强转成 Student 对象
         Student student = (Student) getIntent.getSerializableExtra("data_object");
 
-        TextView textView2 = findViewById(R.id.show2);
-        textView2.setText("上一个页面传递是数据"+student.getName()+student.getAge()+student.getMoney()+student.isCheck());
+        if (student != null) {
+            TextView textView2 = findViewById(R.id.show2);
+            textView2.setText("上一个页面传递是数据"+student.getName()+student.getAge()+student.getMoney()+student.isCheck());
+        } else {
+            // 处理student对象为空的情况，比如给出一个默认值或者显示错误信息
+            TextView textView2 = findViewById(R.id.show2);
+            textView2.setText("上一个页面未传递有效的Student对象");
+        }
 
     }
 
