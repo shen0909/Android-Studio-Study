@@ -215,6 +215,10 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
             // 参数2：请求码
             startActivityForResult(intent,1000);
         }
+        // 点击跳转去学校ListView
+        else if (id == R.id.toLook_ListView) {
+            startActivity(new Intent(this, ListViewActivity.class));
+        }
     }
 
     // 如果通过 startActivityForResult 启动了第二个activity，当第二个activity处理结束后，再回到当前activity时，一定会自动回调 onActivityResult 方法
