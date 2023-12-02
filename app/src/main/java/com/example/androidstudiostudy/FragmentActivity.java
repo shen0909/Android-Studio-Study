@@ -5,9 +5,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 // 创建一个新的activity 绑定布局 R.layout.activity_fragment ,在该布局里添加 fragment 控件，进行展示
-public class FragmentActivity extends AppCompatActivity {
+public class FragmentActivity extends AppCompatActivity implements Fragment2.CommitData{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,5 +58,12 @@ public class FragmentActivity extends AppCompatActivity {
     /* 在 Activity 和 Fragment 建立关系的时候，onAttach 方法会得到环境上下文 context，根据这个context可以获取宿主activity的方法和变量*/
     public String getTitles(){
         return "这是通过环境上下文 和 onAttach 进行传值的";
+    }
+
+    @Override
+    // 2.让 接收数据的activity实现该接口，然后重写回调方法，目的：获取传入的值并做处理
+    public void sedMSG(String msg) {
+        TextView textView = findViewById(R.id.showData);
+        textView.setText("传回的数据："+msg);
     }
 }
