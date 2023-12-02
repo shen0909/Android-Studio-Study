@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,6 +23,9 @@ public class Fragment1 extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         Log.d("FragmentLife","onAttach-----Fragment与activity关联");
+        // 强转成宿主activity
+        String msg = ((FragmentActivity)context).getTitles();
+        Toast.makeText(context,msg,Toast.LENGTH_SHORT).show();
         super.onAttach(context);
     }
 

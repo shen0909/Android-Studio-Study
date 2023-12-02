@@ -52,4 +52,10 @@ public class FragmentActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.fragment2,f2);
         fragmentTransaction.commit();
     }
+
+    // 法二.利用context环境上下文 和 onAttach ，在 Fragment1中获取数据
+    /* 在 Activity 和 Fragment 建立关系的时候，onAttach 方法会得到环境上下文 context，根据这个context可以获取宿主activity的方法和变量*/
+    public String getTitles(){
+        return "这是通过环境上下文 和 onAttach 进行传值的";
+    }
 }
