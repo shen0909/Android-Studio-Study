@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -57,7 +58,16 @@ public class Fragment2 extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_2, container, false);
+        // Activity 向 Fragment 传值 - getArguments() 得到传回来的值，返回的实际是一个 Bundle
+        Bundle bundle = getArguments();
+        // 和Activity之间传值一样，是什么类型就get什么类型
+        String msg1 = bundle.getString("AtoF1");
+        // 根据布局id得到视图
+        View v = inflater.inflate(R.layout.fragment_2, container, false);
+        // 设置视图
+        TextView textView = v.findViewById(R.id.textView2);
+        textView.setText(msg1);
+        // 返回设置好的视图
+        return v ;
     }
 }

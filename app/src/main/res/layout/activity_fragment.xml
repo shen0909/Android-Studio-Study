@@ -40,17 +40,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="20dp"
-        android:orientation="horizontal">
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/button4"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_weight="1"
             android:onClick="replaceFragment"
             android:text="替换fragment" />
+
+        <Button
+            android:id="@+id/toLook_fragment_withBundle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:onClick="commit"
+            android:text="Activity向Fragment传值-通过Bundle" />
 
     </LinearLayout>
 

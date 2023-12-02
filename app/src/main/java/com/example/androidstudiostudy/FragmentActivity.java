@@ -33,4 +33,23 @@ public class FragmentActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.fragment2,newFragment);
         fragmentTransaction.commit();
     }
+
+    // Activity 向 Fragment 传值
+    // 法一.通过Bundle来传递参数
+    public void commit(View view) {
+        /* 注意！！ FragmentManager 和 FragmentTransaction 不能变成全局变量，会报错 */
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        // 1.实例化一个 fragment 对象,注意这里实例化的不是
+        Fragment2 f2 = new Fragment2();
+        // 2.实例化一个Bundle对象
+        Bundle bundle = new Bundle();
+        // 3.存入数据到Bundle对象中
+        bundle.putString("AtoF1","这是activity向fragment传递的第一个消息");
+        // 4.调用Fragment 的 setArgument方法，传入 Bundle 对象
+        f2.setArguments(bundle);
+        // 5.添加或者替换显示的Fragment
+        fragmentTransaction.replace(R.id.fragment2,f2);
+        fragmentTransaction.commit();
+    }
 }
