@@ -5,19 +5,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:layout_marginRight="10dp"
     android:gravity="center_horizontal"
+    android:orientation="vertical"
     tools:context=".FragmentActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="展示Fragment"
         android:textColor="@color/black"
         android:textSize="30dp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:text="展示Fragment"/>
+        android:textStyle="bold" />
 
     <!-- fragement 的静态加载
          通过android:name属性指定 Fragement 的路径
@@ -25,9 +26,14 @@
     <fragment
         android:id="@+id/fragment1"
         android:name="com.example.androidstudiostudy.Fragment1"
-        android:layout_marginTop="20dp"
         android:layout_width="200dp"
-        android:layout_height="200dp"/>
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp" />
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment2"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp" />
 
 </LinearLayout>
