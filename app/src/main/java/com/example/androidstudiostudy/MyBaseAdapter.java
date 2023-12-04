@@ -36,11 +36,18 @@ public class MyBaseAdapter extends BaseAdapter {
     /* 参数1：当前Item的下标 --- 和数据源的下标相同，可以由此获取数据源配置item
      * 参数2：当前Item的view
      * 参数3：当前视图的父视图（可调整当前视图的宽高）*/
+    // 每个视图出现时都会执行，有多少个item就会调用多少次 getView() 如果item太多就会很浪费资源！！
     public View getView(int position, View convertView, ViewGroup parent) {
-        // 完成对view的设置
-        // 将设置好的 item 布局资源转换成view
-        convertView = LayoutInflater.from(context).inflate(R.layout.baseadapter_item,null); // 此时得到的是最初的item布局，没有添加的数据
 
+        // 优化1：利用进入 RecyclerBin 中的view,减少对view的赋值
+        /* 当视图第一次构建后，上下滑动到看不见时就会进入 RecyclerBin，此时 convertView 就不为null,
+         * 我们就可以复用这个 convertView */
+        if( convertView == null){
+            // 完成对view的设置
+            // 将设置好的 item 布局资源转换成view
+            convertView = LayoutInflater.from(context).inflate(R.layout.baseadapter_item,null); // 此时得到的是最初的item布局，没有添加的数据
+            System.out.println("当前显示的视图"+(position+1));
+        }
         // 获取数据源[position] 的数据，并将他们设置到item视图中的控件中
         BaseMsg m = baseMsgList.get(position); // 获取item的数据列表
 
