@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
@@ -22,6 +23,9 @@ public class ListViewActivity extends AppCompatActivity {
 
     // 准备数据源
     private List<Map<String, Object>> data = new ArrayList<>();
+
+    BaseAdapter baseAdapter; // 将 BaseAdapter 设置成全局变量
+    ListView listView; // 将 ListView 也设置成全局变量
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +39,7 @@ public class ListViewActivity extends AppCompatActivity {
      * 4.为ListView设置适配器*/
     public void showListView(View view) {
         int id = view.getId();
-        ListView listView = findViewById(R.id.list1);
+        listView = findViewById(R.id.list1);
         String[] datas = {"aaa", "bbb", "ccc", "ddd", "eee", "fff"};
         if (id == R.id.buttonArray) {
             // 实例化适配器
@@ -79,7 +83,7 @@ public class ListViewActivity extends AppCompatActivity {
              * 4.为ListView设置适配器*/
             // 准备数据源
             initBaseListData();
-            BaseAdapter baseAdapter = new MyBaseAdapter(lists,this);
+            baseAdapter = new MyBaseAdapter(lists,this);
             listView.setAdapter(baseAdapter);
         }
     }
@@ -115,5 +119,14 @@ public class ListViewActivity extends AppCompatActivity {
             BaseMsg baseMsg = new BaseMsg(touxiang[i], "用户" + (i+1), "这是第" + (i+1) + "段代码", false);
             lists.add(baseMsg);
         }
+    }
+
+    // 动态添加 BaseAdapter 数据源中的数据
+    public void addData(View view) {
+        lists.add(new BaseMsg(R.mipmap.ic_launcher,"新name","这是新增的",false));
+        // 通知适配器更新
+        baseAdapter.notifyDataSetChanged();
+        // 设置listView自动显示到最新的数据
+        listView.setTranscriptMode(AbsListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
     }
 }
