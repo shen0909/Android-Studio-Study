@@ -1,13 +1,18 @@
 package com.example.androidstudiostudy;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
+
+import com.example.androidstudiostudy.data.BaseMsg;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +21,7 @@ import java.util.Map;
 public class ListViewActivity extends AppCompatActivity {
 
     // 准备数据源
-   private List<Map<String, Object>> data = new ArrayList<>();
+    private List<Map<String, Object>> data = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,11 +36,11 @@ public class ListViewActivity extends AppCompatActivity {
     public void showListView(View view) {
         int id = view.getId();
         ListView listView = findViewById(R.id.list1);
-        String[] datas = {"aaa","bbb","ccc","ddd","eee","fff"};
-        if (id == R.id.buttonArray){
+        String[] datas = {"aaa", "bbb", "ccc", "ddd", "eee", "fff"};
+        if (id == R.id.buttonArray) {
             // 实例化适配器
             /* 这是数组适配器的第三种构造方法，可以在单项里放置许多其他内容，此时不会因为根布局不是TextView而报错*/
-            ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.array_item_layout,R.id.arry_tx,datas);
+            ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.array_item_layout, R.id.arry_tx, datas);
             listView.setAdapter(arrayAdapter);
         } else if (id == R.id.buttonSimple) {
             // 准备数据源
@@ -48,9 +53,9 @@ public class ListViewActivity extends AppCompatActivity {
              * 参数5：数据去向的id数组
              * key所指代的数据会在to数组中id所代表的空间上显示出来
              * */
-            String[] from = {"icon","name","age"}; // 参数4
-            int[] to = {R.id.headIcon,R.id.itemName,R.id.itemAge}; // 参数5
-            SimpleAdapter simpleAdapter = new SimpleAdapter(this,data,R.layout.simpleadapeter_item,from,to);
+            String[] from = {"icon", "name", "age"}; // 参数4
+            int[] to = {R.id.headIcon, R.id.itemName, R.id.itemAge}; // 参数5
+            SimpleAdapter simpleAdapter = new SimpleAdapter(this, data, R.layout.simpleadapeter_item, from, to);
             listView.setAdapter(simpleAdapter);
 
             // 为listView设置item点击事件
@@ -60,32 +65,55 @@ public class ListViewActivity extends AppCompatActivity {
                     /* 数据源data是一个List<Map<String,Object>>的列表，
                      * onItemClick方法，返回的position就是当前点击的 item 的位序，通过它可以拿到item的数据源
                      * view 就是点击的item的视图*/
-                    Map<String,Object> data1 = data.get(position);
-                    Toast.makeText(ListViewActivity.this,"姓名"+data1.get("name")+",年龄："+data1.get("age"),Toast.LENGTH_SHORT).show();
+                    Map<String, Object> data1 = data.get(position);
+                    Toast.makeText(ListViewActivity.this, "姓名" + data1.get("name") + ",年龄：" + data1.get("age"), Toast.LENGTH_SHORT).show();
                 }
             });
-        } else if (id == R.id.buttonBase) {
+        }
+        // 跳转 BaseAdapter
+        else if (id == R.id.buttonBase) {
+            // 实例化适配器
+            /* 1.准备布局（ListView每一项的显示样式布局）
+             * 2.准备数据源
+             * 3.实例化适配器
+             * 4.为ListView设置适配器*/
+            // 准备数据源
+            initBaseListData();
+            BaseAdapter baseAdapter = new MyBaseAdapter(lists,this);
+            listView.setAdapter(baseAdapter);
         }
     }
 
     private void initData() {
-        Map<String,Object> data1 = new HashMap<>();
-        data1.put("icon",R.mipmap.star);
-        data1.put("name","沈成林");
-        data1.put("age",23);
+        Map<String, Object> data1 = new HashMap<>();
+        data1.put("icon", R.mipmap.star);
+        data1.put("name", "沈成林");
+        data1.put("age", 23);
 
-        Map<String,Object> data2 = new HashMap<>();
-        data2.put("icon",R.mipmap.star);
-        data2.put("name","杨滨溶");
-        data2.put("age",23);
+        Map<String, Object> data2 = new HashMap<>();
+        data2.put("icon", R.mipmap.star);
+        data2.put("name", "杨滨溶");
+        data2.put("age", 23);
 
-        Map<String,Object> data3 = new HashMap<>();
-        data3.put("icon",R.mipmap.star);
-        data3.put("name","朱一龙");
-        data3.put("age",23);
+        Map<String, Object> data3 = new HashMap<>();
+        data3.put("icon", R.mipmap.star);
+        data3.put("name", "朱一龙");
+        data3.put("age", 23);
 
         data.add(data1);
         data.add(data2);
         data.add(data3);
+    }
+
+
+    private List<BaseMsg> lists = new ArrayList<>();  // 定义一个 BaseMsg 对象的列表
+    private int[] touxiang ={R.mipmap.star,R.mipmap.study,R.mipmap.star,R.mipmap.study,R.mipmap.star,R.mipmap.study,R.mipmap.star,R.mipmap.study,}; // 定义一个int类型的数组，里面存放 图标的id
+
+    // 初始化 BaseMsg 对象的列表
+    public void initBaseListData() {
+        for (int i = 0; i < 8; i++) {
+            BaseMsg baseMsg = new BaseMsg(touxiang[i], "用户" + (i+1), "这是第" + (i+1) + "段代码", false);
+            lists.add(baseMsg);
+        }
     }
 }
