@@ -22,6 +22,9 @@ import android.widget.PopupWindow;
 import android.widget.Toast;
 import com.example.androidstudiostudy.data.Student;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -353,17 +356,63 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
 
     // 网络操作方法
     public void netWork(View view) {
+        int id = view.getId();
+        // get 请求
+        if(id == R.id.netWork_GET){
+            // 请求网络不能在主线程中进行,所以要开一个新的线程
+            new Thread(){
+                @Override
+                public void run() {
+                    super.run();
+                    GetHttp();
+                }
+            }.start();
+        }
+        // post 请求
+        else if (id == R.id.netWork_POST) {
+
+        }
+    }
+    // get 请求方法
+    public void GetHttp(){
         try {
             // 1. 实例化一个 URL 对象
-            // 2. 获取 HttpURLConnection 实例
-            // 3. 设置请求相关属性
-            // 4. 获取响应码 200 成功 404 未请求到指定资源 500 服务器异常
             URL url = new URL("https://reqres.in/api/users");
+
+            // 2. 获取 HttpURLConnection 实例，使用URL的
+            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+            // 3. 设置请求相关属性
+            httpURLConnection.setRequestMethod("GET"); // 请求方法
+            httpURLConnection.setConnectTimeout(6000); // 超时时间
+
+            // 4. 获取响应码 200 成功 404 未请求到指定资源 500 服务器异常（此时已经发起请求）
+            if( httpURLConnection.getResponseCode() == HttpURLConnection.HTTP_OK){
+                // 5.判断响应码并获取响应数据（响应的正文）
+                InputStream inputStream = httpURLConnection.getInputStream(); // 获取了服务器返回的输入流
+                byte[] bytes = new byte[1024]; // bytes 数组，每次最多可以存放 1024 个字节
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(); // 存储从输入流中读取的数据
+                int len = 0;
+                // 输入流中读取数据，然后将数据写入ByteArrayOutputStream中
+                /* inputStream.read(bytes) ：从输入流中读取数据，并将读取的内容存储到bytes数组中
+                 * 这个方法的返回值是读取的字节数，如果已经到达流的末尾，它会返回-1
+                 * len = inputStream.read(bytes) 是用来判断是否已经读到了末尾*/
+                while((len = inputStream.read(bytes)) >-1){
+                    // 将字节数组中的内容写入到缓存流
+                    /* 参数1：要存入的字节数组
+                     * 参数2：起点
+                     * 参数3：要存入的长度*/
+                    byteArrayOutputStream.write(bytes,0,len);
+                }
+                String s = new String(byteArrayOutputStream.toByteArray()) ;
+                Log.e("GET_NetWork",s);
+            }
         } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-
     // 自定义一个 继承 View.OnClickListener 接口的类，实现里面的方法
     static class MyClickListener implements View.OnClickListener {
         @Override
