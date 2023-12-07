@@ -223,6 +223,10 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
         else if (id == R.id.toLook_ViewPage2) {
             startActivity(new Intent(this, ViewPage2Activity.class));
         }
+        // 点击跳转去学习TabLayout 页面切换
+        else if (id == R.id.toLook_TabLayout) {
+            startActivity(new Intent(this,TabLayoutActivity.class));
+        }
     }
 
     // 如果通过 startActivityForResult 启动了第二个activity，当第二个activity处理结束后，再回到当前activity时，一定会自动回调 onActivityResult 方法

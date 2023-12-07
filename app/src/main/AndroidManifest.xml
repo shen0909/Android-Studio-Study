@@ -13,6 +13,9 @@
         android:theme="@style/Theme.AndroidStudioStudy"
         tools:targetApi="31">
         <activity
+            android:name=".TabLayoutActivity"
+            android:exported="false" />
+        <activity
             android:name=".ViewPage2Activity"
             android:exported="false" />
         <activity
