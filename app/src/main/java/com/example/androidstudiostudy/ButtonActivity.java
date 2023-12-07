@@ -22,6 +22,10 @@ import android.widget.PopupWindow;
 import android.widget.Toast;
 import com.example.androidstudiostudy.data.Student;
 
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 public class ButtonActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
@@ -347,6 +351,19 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
         popupWindow.showAsDropDown(anchorView);
     }
 
+    // 网络操作方法
+    public void netWork(View view) {
+        try {
+            // 1. 实例化一个 URL 对象
+            // 2. 获取 HttpURLConnection 实例
+            // 3. 设置请求相关属性
+            // 4. 获取响应码 200 成功 404 未请求到指定资源 500 服务器异常
+            URL url = new URL("https://reqres.in/api/users");
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     // 自定义一个 继承 View.OnClickListener 接口的类，实现里面的方法
     static class MyClickListener implements View.OnClickListener {
         @Override
@@ -355,4 +372,5 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
             Log.e("btn_tags", "通过自定义内部类实现点击方法");
         }
     }
+
 }
