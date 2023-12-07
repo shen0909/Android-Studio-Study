@@ -51,7 +51,9 @@ public class MyBaseAdapter extends BaseAdapter {
         if (convertView == null) {
             // 完成对view的设置
             // 将设置好的 item 布局资源转换成view
-            convertView = LayoutInflater.from(context).inflate(R.layout.baseadapter_item, null); // 此时得到的是最初的item布局，没有添加的数据
+            // convertView = LayoutInflater.from(context).inflate(R.layout.baseadapter_item, null); // 此时得到的是最初的item布局，没有添加的数据
+            // 可以使用 parent.getContext() 获取父视图的位置,这一步是为了获取正确的 LayoutInflater 对象
+            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.baseadapter_item, null); // 此时得到的是最初的item布局，没有添加的数据
 
             holder = new ViewHolder();
             holder.icon = convertView.findViewById(R.id.base_icon);

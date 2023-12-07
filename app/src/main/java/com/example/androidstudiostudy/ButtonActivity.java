@@ -219,6 +219,10 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
         else if (id == R.id.toLook_ListView) {
             startActivity(new Intent(this, ListViewActivity.class));
         }
+        // 点击跳转去学习ViewPage2
+        else if (id == R.id.toLook_ViewPage2) {
+            startActivity(new Intent(this, ViewPage2Activity.class));
+        }
     }
 
     // 如果通过 startActivityForResult 启动了第二个activity，当第二个activity处理结束后，再回到当前activity时，一定会自动回调 onActivityResult 方法
@@ -285,7 +289,7 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
          * 布局文件(.xml文件)定义了UI元素的结构和外观，而View对象则代表了布局中的一个具体的UI元素。
          * 通过使用LayoutInflater类，我们可以将布局文件解析成一个View对象，然后将布局文件转换为实际可见的 UI 元素
          * 通过指定上下文(this)来获取当前上下文环境的LayoutInflater实例
-         * nflate(R.layout.popuop_layout, null)是LayoutInflater类的方法，它用于将布局文件R.layout.popuop_layout转换为一个View对象。*/
+         * inflate(R.layout.popuop_layout, null)是LayoutInflater类的方法，它用于将布局文件R.layout.popuop_layout转换为一个View对象。*/
         View v = LayoutInflater.from(this).inflate(R.layout.popuop_layout,null);
         PopupWindow popupWindow = new PopupWindow(v,400,70,false);
 
