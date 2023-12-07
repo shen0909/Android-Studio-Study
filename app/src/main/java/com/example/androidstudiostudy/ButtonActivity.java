@@ -25,8 +25,10 @@ import com.example.androidstudiostudy.data.Student;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 
 public class ButtonActivity extends AppCompatActivity implements View.OnClickListener {
@@ -370,9 +372,65 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
         }
         // post 请求
         else if (id == R.id.netWork_POST) {
-
+            new Thread(){
+                @Override
+                public void run() {
+                    super.run();
+                    PostHttp();
+                }
+            }.start();
         }
     }
+    // POST 请求方法
+    private void PostHttp() {
+        try {
+            // 1. 实例化一个 URL 对象
+            URL url = new URL("https://www.wanandroid.com/user/login");
+
+            // 2. 获取 HttpURLConnection 实例，使用URL的
+            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+            // 3. 设置请求相关属性
+            httpURLConnection.setRequestMethod("POST"); // 请求方法
+            httpURLConnection.setConnectTimeout(6000); // 超时时间
+            httpURLConnection.setDoOutput(true); // 设置允许输出
+            httpURLConnection.setRequestProperty("Content-Type","application/json;Charset=UTF-8");// 设置提交数据的类型
+
+            // 4.获取输出流（请求正文）
+            OutputStream out = httpURLConnection.getOutputStream();
+            // 5.写数据
+            out.write(("username="+"akshfalwhfaina"+"&password="+"123456").getBytes());
+
+            if( httpURLConnection.getResponseCode() == HttpURLConnection.HTTP_OK){
+                // 6.判断响应码并获取响应数据（响应的正文）
+                InputStream inputStream = httpURLConnection.getInputStream(); // 获取了服务器返回的输入流
+                byte[] bytes = new byte[1024]; // bytes 数组，每次最多可以存放 1024 个字节
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(); // 存储从输入流中读取的数据
+                int len = 0;
+                // 输入流中读取数据，然后将数据写入ByteArrayOutputStream中
+                /* inputStream.read(bytes) ：从输入流中读取数据，并将读取的内容存储到bytes数组中
+                 * 这个方法的返回值是读取的字节数，如果已经到达流的末尾，它会返回-1
+                 * len = inputStream.read(bytes) 是用来判断是否已经读到了末尾*/
+                while((len = inputStream.read(bytes)) >-1){
+                    // 将字节数组中的内容写入到缓存流
+                    /* 参数1：要存入的字节数组
+                     * 参数2：起点
+                     * 参数3：要存入的长度*/
+                    byteArrayOutputStream.write(bytes,0,len);
+                }
+                String s = new String(byteArrayOutputStream.toByteArray()) ;
+                Log.e("POST_NetWork",s);
+            }
+
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        } catch (ProtocolException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     // get 请求方法
     public void GetHttp(){
         try {
@@ -413,6 +471,8 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
             throw new RuntimeException(e);
         }
     }
+
+
     // 自定义一个 继承 View.OnClickListener 接口的类，实现里面的方法
     static class MyClickListener implements View.OnClickListener {
         @Override
