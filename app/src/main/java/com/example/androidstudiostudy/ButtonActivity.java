@@ -433,6 +433,7 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
 
     // get 请求方法
     public void GetHttp(){
+        /* ！！！ 注意 子线程里面不能处理界面显示问题，如果需要处理，必须得调用 runOnUiThread(); 重新实现该方法，在该方法里进行页面显示的处理*/
         try {
             // 1. 实例化一个 URL 对象
             URL url = new URL("https://reqres.in/api/users");
@@ -464,6 +465,10 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
                 }
                 String s = new String(byteArrayOutputStream.toByteArray()) ;
                 Log.e("GET_NetWork",s);
+                // 跳转Json页并将数据传送过去
+                Intent intent = new Intent(this,JsonActivity.class);
+                intent.putExtra("jsonData",s);
+                startActivity(intent);
             }
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
