@@ -20,8 +20,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.PopupWindow;
 import android.widget.Toast;
+import com.example.androidstudiostudy.data.DataBean;
+import com.example.androidstudiostudy.data.OneJsonBean;
 import com.example.androidstudiostudy.data.Student;
-
+import com.google.gson.Gson;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -236,6 +238,27 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
         else if (id == R.id.toLook_TabLayout) {
             startActivity(new Intent(this,TabLayoutActivity.class));
         }
+        // Gson 解析
+        else if (id == R.id.gson) {
+            JsonWithGson();
+        }
+    }
+
+    // Gson解析 json 数据
+    private void JsonWithGson() {
+        // Gson 是一个工具类
+        Gson gson = new Gson();
+
+        // 创建一个数据实体对象
+        DataBean dataBean = new DataBean(1,"123@qq.com","yang","bin","aaaaaa");
+
+        // toJson:将 bean 对象转换成 json 字符串
+        String beanToJson = gson.toJson(dataBean);
+        Log.e("bean转换成json字符串",beanToJson);
+
+        // fromJson : 将 json 字符串转换成 bean 数据对象
+        DataBean dataBean2 = gson.fromJson(beanToJson, DataBean.class);
+        Log.e("json字符串转换成bean",dataBean2.toString());
     }
 
     // 如果通过 startActivityForResult 启动了第二个activity，当第二个activity处理结束后，再回到当前activity时，一定会自动回调 onActivityResult 方法
@@ -465,6 +488,12 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
                 }
                 String s = new String(byteArrayOutputStream.toByteArray()) ;
                 Log.e("GET_NetWork",s);
+
+                // 将返回的数据从json字符串转换成对象
+                Gson gson = new Gson();
+                OneJsonBean  oneJsonBean = gson.fromJson(s, OneJsonBean.class);
+                Log.e("GET返回的数据转换成对象",oneJsonBean.toString());
+
                 // 跳转Json页并将数据传送过去
                 Intent intent = new Intent(this,JsonActivity.class);
                 intent.putExtra("jsonData",s);
@@ -488,3 +517,9 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
     }
 
 }
+/*
+* Gson 解析：用第三方工具来解析json数据
+
+toJson:将 bean 对象转换成 json 字符串
+fromJson:将 json 字符串转换成 bean 对象
+* */
