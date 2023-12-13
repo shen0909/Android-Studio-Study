@@ -8,6 +8,7 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import com.example.androidstudiostudy.data.DataBean;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,19 +19,30 @@ import java.net.URL;
 
 public class HandleActivity extends AppCompatActivity {
 
-    TextView textView ;
+    TextView textView1, textView2, textView3;
     String httpDate = "";
 
     // 利用 handller 处理
     // 1.实例化一个 Handler
     Handler handler = new Handler(
+            // 只要 handle 发了消息，就一定会触发 handleMessage 方法，并传入一个 Message 对象
             new Handler.Callback() {
                 @Override
                 // 3.由handle对象接收消息并处理，在Handler的内部类中处理
                 public boolean handleMessage(@NonNull Message msg) {
                     Log.e("handler 处理消息", "这是handler发送的消息，此时是空");
-                    textView = findViewById(R.id.t1);
-                    textView.setText(httpDate);
+
+                    // 根据 Message 的 what 属性，区分来源于哪个线程
+                    if (msg.what == 1) {
+                        textView1 = findViewById(R.id.t1);
+                        textView1.setText(httpDate);
+                    } else if (msg.what == 2) {
+                        textView2 = findViewById(R.id.t2);
+                        textView2.setText(httpDate);
+                    } else if (msg.what == 3) {
+                        textView3 = findViewById(R.id.t3);
+                        textView3.setText("msg.what = "+msg.what+"\n"+msg.obj.toString());
+                    }
                     return false;
                 }
             }
@@ -78,7 +90,29 @@ public class HandleActivity extends AppCompatActivity {
                     super.run();
                     getHttp();
                     httpDate = httpDate + "\n第2个线程";
-                    handler.sendEmptyMessage(1);
+                    handler.sendEmptyMessage(2);
+                }
+            }.start();
+        }
+        // 第三个线程
+        else if (id == R.id.handle3) {
+            new Thread() {
+                @Override
+                public void run() {
+                    super.run();
+                    getHttp();
+                    // 当 handler 需要传送数据时，需要使用到 Message，使用 sendMessage 方法
+                    /* 1. 实例化一个 Message
+                     * 2. 参数
+                     ** what:用于区分 handler 发送消息的不同线程来源
+                     ** arg1/arg2: 子线程需要向主线程传递整型参数
+                     ** obj: Object 任意对象*/
+                    Message message = new Message();
+                    message.what = 3;
+
+                    DataBean dataBean = new DataBean(1,"157181@qq.com","ybr","scl","asiudh");
+                    message.obj = dataBean;
+                    handler.sendMessage(message);
                 }
             }.start();
         }

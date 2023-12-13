@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".HandleActivity">
 
     <TextView
@@ -28,6 +28,13 @@
         android:onClick="getDate"
         android:text="Get操作-第一个线程" />
 
+    <TextView
+        android:id="@+id/t2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="第二个线程的数据"
+        android:textColor="#F44336" />
+
     <Button
         android:id="@+id/handle2"
         android:layout_width="wrap_content"
@@ -35,5 +42,20 @@
         android:layout_gravity="center"
         android:onClick="getDate"
         android:text="Get操作-第二个线程" />
+
+    <TextView
+        android:id="@+id/t3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="第三个线程的数据"
+        android:textColor="#F44336" />
+
+    <Button
+        android:id="@+id/handle3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:onClick="getDate"
+        android:text="Get操作-第三个线程" />
 
 </LinearLayout>
