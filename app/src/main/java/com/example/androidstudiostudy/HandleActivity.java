@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
@@ -48,10 +49,41 @@ public class HandleActivity extends AppCompatActivity {
             }
     );
 
+    Handler handler2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_handle);
+
+        // 开一个新的线程，用于接收主线程向子线程传递消息
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                // 在子线程中开辟 handler
+                // 但此时会报错 Can't create handler inside thread that has not called Looper.prepare()
+                /* 这是由于在一个未调用Looper.prepare()的线程内尝试创建 Handler对象导致的。
+                 * 在Android中，Handler对象必须在主线程中创建，如果想要在子线程中创建Handler对象,
+                 * 必须确保在创建Handler对象之前在线程中调用了Looper.prepare()方法。*/
+
+                // 系统会自动为主线程开启消息循环（自动调用这句代码），与此同时创建一个 Looper 对象，不断的从 MessageQue中读取消息，交给主线程处理
+                Looper.prepare(); // 准备开启一个消息循环
+
+                handler2 = new Handler(new Handler.Callback() {
+                    @Override
+                    public boolean handleMessage(@NonNull Message msg) {
+                        Log.e("主线程向子线程中发送消息", "" + msg.what + "" + msg.arg1);
+                        return false;
+                    }
+                });
+
+                // 但此时点击虽然不报错，可是里面的代码依旧没有被执行
+                /* 因为准备好一个消息循环后还要开启一个消息循环 -----> Looper.loop();
+                 * 消息循环期间，线程会一直阻塞在这里，等待处理来自消息队列的消息。
+                 * 它会不断地从消息队列中取出消息，并将其分发给对应的Handler对象进行处理。*/
+                Looper.loop(); //开始消息循环，相当于 while(true) ,在这里等待消息
+            }
+        }).start();
     }
 
     // 此时有两个线程，这两线程发送的消息都能被 Handle接收，但如何区分不同线程发送的消息从而做不同处理呢？
@@ -110,11 +142,18 @@ public class HandleActivity extends AppCompatActivity {
                     Message message = new Message();
                     message.what = 3;
 
-                    DataBean dataBean = new DataBean(1,"157181@qq.com","ybr","scl","asiudh");
+                    DataBean dataBean = new DataBean(1, "157181@qq.com", "ybr", "scl", "asiudh");
                     message.obj = dataBean;
                     handler.sendMessage(message);
                 }
             }.start();
+        }
+        // 第四个线程- 主线程向子线程发送消息
+        else if (id == R.id.handle4) {
+            Message message2 = new Message();
+            message2.what = 999;
+            message2.arg1 = 1234;
+            handler2.sendMessage(message2);
         }
     }
 

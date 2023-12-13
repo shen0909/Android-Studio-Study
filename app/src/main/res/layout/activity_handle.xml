@@ -1,61 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".HandleActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Json数据文本如下："
-        android:textSize="32sp" />
+        android:orientation="vertical">
+        
+        <TextView
+            android:id="@+id/t1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="网络数据"
+            android:textColor="#9C27B0" />
 
-    <TextView
-        android:id="@+id/t1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="网络数据"
-        android:textColor="#9C27B0" />
+        <Button
+            android:id="@+id/handle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="getDate"
+            android:text="Get操作-第一个线程" />
 
-    <Button
-        android:id="@+id/handle1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:onClick="getDate"
-        android:text="Get操作-第一个线程" />
+        <TextView
+            android:id="@+id/t2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="第二个线程的数据"
+            android:textColor="#F44336" />
 
-    <TextView
-        android:id="@+id/t2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="第二个线程的数据"
-        android:textColor="#F44336" />
+        <Button
+            android:id="@+id/handle2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="getDate"
+            android:text="Get操作-第二个线程" />
 
-    <Button
-        android:id="@+id/handle2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:onClick="getDate"
-        android:text="Get操作-第二个线程" />
+        <TextView
+            android:id="@+id/t3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="第三个线程的数据"
+            android:textColor="#F44336" />
 
-    <TextView
-        android:id="@+id/t3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="第三个线程的数据"
-        android:textColor="#F44336" />
+        <Button
+            android:id="@+id/handle3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="getDate"
+            android:text="Get操作-第三个线程" />
 
-    <Button
-        android:id="@+id/handle3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:onClick="getDate"
-        android:text="Get操作-第三个线程" />
+        <Button
+            android:id="@+id/handle4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="getDate"
+            android:text="主线程向子线程发送消息" />
+    </LinearLayout>
 
-</LinearLayout>
+</ScrollView>
