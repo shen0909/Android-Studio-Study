@@ -242,6 +242,10 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
         else if (id == R.id.gson) {
             JsonWithGson();
         }
+        // 去学习Handle
+        else if (id == R.id.tohandle) {
+            startActivity(new Intent(this, HandleActivity.class));
+        }
     }
 
     // Gson解析 json 数据
@@ -517,9 +521,3 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
     }
 
 }
-/*
-* Gson 解析：用第三方工具来解析json数据
-
-toJson:将 bean 对象转换成 json 字符串
-fromJson:将 json 字符串转换成 bean 对象
-* */
