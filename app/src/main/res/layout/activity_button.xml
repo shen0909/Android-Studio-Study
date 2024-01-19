@@ -190,6 +190,14 @@
             android:layout_marginTop="20dp"
             android:onClick="popAlert"
             android:text="Handle" />
+
+        <Button
+            android:id="@+id/timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onClick="popAlert"
+            android:text="计时器案例" />
     </LinearLayout>
 
 

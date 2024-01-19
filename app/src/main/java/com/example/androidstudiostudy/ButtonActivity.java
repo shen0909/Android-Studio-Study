@@ -246,6 +246,11 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
         else if (id == R.id.tohandle) {
             startActivity(new Intent(this, HandleActivity.class));
         }
+        // 计时器案例
+        else if(id == R.id.timer){
+            Intent intent = new Intent(this,TimerActivity.class);
+            startActivity(intent);
+        }
     }
 
     // Gson解析 json 数据
