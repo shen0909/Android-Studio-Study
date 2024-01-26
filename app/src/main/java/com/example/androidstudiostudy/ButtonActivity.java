@@ -251,6 +251,11 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
             Intent intent = new Intent(this,TimerActivity.class);
             startActivity(intent);
         }
+        // 去学习 recycleView
+        else if(id == R.id.recycleView){
+            Intent intent = new Intent(this,MyRecycleView.class);
+            startActivity(intent);
+        }
     }
 
     // Gson解析 json 数据
