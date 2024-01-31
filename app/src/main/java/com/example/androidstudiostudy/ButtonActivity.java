@@ -256,6 +256,10 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
             Intent intent = new Intent(this,MyRecycleView.class);
             startActivity(intent);
         }
+        // 去学习数据库
+        else if(id == R.id.toStudySqlite){
+            startActivity(new Intent(this, LoginWithSqlite.class));
+        }
     }
 
     // Gson解析 json 数据
