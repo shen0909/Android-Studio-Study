@@ -1,11 +1,13 @@
 package com.example.androidstudiostudy.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.androidstudiostudy.R;
 import com.example.androidstudiostudy.data.UserBean;
@@ -14,6 +16,9 @@ import java.util.ArrayList;
 public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapter.ViewHolder> {
     ArrayList<UserBean> items;
     Context context;
+
+    //声明一个广播事件的表示串
+    public final static String EVENT = "guangboshijianbiaoshichuan";
 
     public recyclerViewAdapter(ArrayList<UserBean> items) {
         this.items = items;
@@ -39,6 +44,11 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
             @Override
             public void onClick(View view) {
                 // 点击一条项目，在页面上显示LoginWithSqlite上显示 用什么呢？广播？
+                // 创建一个广播事件的意图
+                Intent intent = new Intent(EVENT);
+                intent.putExtra("checkView",items.get(i));
+                // 通过本地广播管理器来发送广播
+                LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
             }
         });
     }

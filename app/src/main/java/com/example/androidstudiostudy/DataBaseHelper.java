@@ -92,7 +92,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 String name = cursor.getString(1);
                 String phone = cursor.getString(2);
                 String pwd = cursor.getString(3);
-                UserBean userBean = new UserBean(name, phone, pwd);
+                UserBean userBean = new UserBean(name, pwd, phone);
                 userBean.setId(id);
                 returnList.add(userBean);
             } while (cursor.moveToNext());
