@@ -16,4 +16,11 @@
         android:layout_height="wrap_content"
         android:checked="true"
         android:text="CheckBox" />
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="第二个选项" />
 </LinearLayout>

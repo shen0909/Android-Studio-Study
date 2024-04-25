@@ -8,25 +8,30 @@
     tools:context=".RadioButtonActivity">
     <!-- 单选控件 在一个 RadioGroup 中只能选中一个 -->
     <RadioGroup
+        android:id="@+id/radioGroupId"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:background="@color/cardview_shadow_start_color">
         <RadioButton
+            android:id="@+id/radio_11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="111"/>
 
         <RadioButton
+            android:id="@+id/radio_22"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="222"/>
 
         <RadioButton
+            android:id="@+id/radio_33"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="333"/>
 
         <RadioButton
+            android:id="@+id/radio_44"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="444"/>

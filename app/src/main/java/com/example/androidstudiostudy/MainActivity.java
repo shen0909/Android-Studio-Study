@@ -127,8 +127,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void jumpe(View view) {
-        Intent intent = new Intent(MainActivity.this,ButtonActivity.class);
-        startActivity(intent);
+        if(view.getId() == R.id.toLook_UIComponent ){
+            Intent intent = new Intent(MainActivity.this,ComponentActivity.class);
+            startActivity(intent);
+        } else if (view.getId() == R.id.jumpPage) {
+            Intent intent = new Intent(MainActivity.this,ButtonActivity.class);
+            startActivity(intent);
+        }
     }
 
 }

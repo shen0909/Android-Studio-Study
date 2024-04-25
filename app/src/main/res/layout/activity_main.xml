@@ -77,11 +77,20 @@
         android:text="sign"/>
 
     <Button
+        android:id="@+id/jumpPage"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:onClick="jumpe"
         android:text="跳转"/>
+
+    <Button
+        android:id="@+id/toLook_UIComponent"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:onClick="jumpe"
+        android:text="去看看常用UI组件"/>
 
     <Button
         android:id="@+id/ctx_btn"
