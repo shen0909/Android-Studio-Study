@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.example.androidstudiostudy.data.DataBean;
 import com.example.androidstudiostudy.data.OneJsonBean;
 import com.example.androidstudiostudy.data.Student;
+import com.example.androidstudiostudy.dataStorage.spActivity;
 import com.google.gson.Gson;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -259,6 +260,9 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
         // 去学习数据库
         else if(id == R.id.toStudySqlite){
             startActivity(new Intent(this, LoginWithSqlite.class));
+        }
+        else if(id == R.id.toStudySp){
+            startActivity(new Intent(this, spActivity.class));
         }
     }
 

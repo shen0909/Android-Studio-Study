@@ -214,6 +214,14 @@
             android:layout_marginTop="20dp"
             android:onClick="popAlert"
             android:text="去学习数据库" />
+
+        <Button
+            android:id="@+id/toStudySp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onClick="popAlert"
+            android:text="去学习SharedPreference" />
     </LinearLayout>
 
 

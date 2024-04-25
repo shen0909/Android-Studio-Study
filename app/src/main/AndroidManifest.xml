@@ -17,6 +17,9 @@
         android:theme="@style/Theme.AndroidStudioStudy"
         tools:targetApi="31">
         <activity
+            android:name=".dataStorage.spActivity"
+            android:exported="false" />
+        <activity
             android:name=".ComponentActivity"
             android:exported="false" />
         <activity
