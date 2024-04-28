@@ -21,6 +21,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.PopupWindow;
 import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.RequestQueue;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageRequest;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.androidstudiostudy.data.DataBean;
 import com.example.androidstudiostudy.data.OneJsonBean;
 import com.example.androidstudiostudy.data.Student;
@@ -35,10 +44,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -51,6 +63,7 @@ import okhttp3.Response;
 
 public class ButtonActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private RequestQueue requestQueue;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,6 +128,8 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
                 popupMenu.show();
             }
         });
+        // 创建Volley请求队列
+        requestQueue = Volley.newRequestQueue(this);
     }
 
     ActionMode.Callback ac = new ActionMode.Callback() {
@@ -611,7 +626,6 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
                 Log.e("okhttp-----post失败",e.toString());
 
             }
-
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 Log.e("okhttp-----post成功",response.toString());
@@ -619,4 +633,49 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
         });
     }
 
+    // volley网络框架
+    public String url = "https://reqres.in/api/users";
+    public void toLearnVolley(View view){
+        // 创建请求
+        StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.GET, url, new com.android.volley.Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.e("volley---成功",response);
+            }
+        }, new com.android.volley.Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("volley---失败",error.toString());
+            }
+        });
+        // 将请求加入请求队列
+        requestQueue.add(stringRequest);
+    }
+
+    public String postUrl = "https://www.wanandroid.com/user/login";
+    public void toLearnVolleyPost(View view){
+        // 如何放入请求体？
+        StringRequest stringPostRequest = new StringRequest(com.android.volley.Request.Method.POST, postUrl, new com.android.volley.Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.e("volley---Post成功",response);
+            }
+        }, new com.android.volley.Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("volley---Post失败",error.toString());
+            }
+        }){
+            @Nullable
+            @Override
+            // 重写此方法返回参数的map作为请求体
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> map = new HashMap<String,String>();
+                map.put("username","akshfalwhfaina");
+                map.put("password","123456");
+                return map;
+            }
+        };
+        requestQueue.add(stringPostRequest);
+    }
 }

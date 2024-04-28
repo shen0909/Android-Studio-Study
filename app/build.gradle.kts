@@ -43,4 +43,6 @@ dependencies {
 
     // 添加okhttp的依赖
     implementation("com.squareup.okhttp3:okhttp:4.11.0")
+    // 添加volley依赖
+    implementation ("com.android.volley:volley:1.2.1")
 }

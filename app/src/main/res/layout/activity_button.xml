@@ -238,6 +238,22 @@
             android:layout_marginTop="20dp"
             android:onClick="toLearnOKhttpPost"
             android:text="去学习OKhttp" />
+
+        <Button
+            android:id="@+id/toStudyVolley"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onClick="toLearnVolley"
+            android:text="去学习Volley" />
+
+        <Button
+            android:id="@+id/toStudyVolleyPost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onClick="toLearnVolleyPost"
+            android:text="去学习Volley--Post" />
     </LinearLayout>
 
 
