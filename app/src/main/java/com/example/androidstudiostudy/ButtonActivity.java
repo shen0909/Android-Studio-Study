@@ -1,5 +1,6 @@
 package com.example.androidstudiostudy;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +26,11 @@ import com.example.androidstudiostudy.data.OneJsonBean;
 import com.example.androidstudiostudy.data.Student;
 import com.example.androidstudiostudy.dataStorage.spActivity;
 import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,6 +39,15 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.HttpUrl;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class ButtonActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -536,6 +551,72 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
             // 在控制台输入语句 Log.e 输入错误类型，也就是红色语句，不管错误与否
             Log.e("btn_tags", "通过自定义内部类实现点击方法");
         }
+    }
+
+    public void toLearnOKhttp(View view) {
+        // 创建一个 OKhttp 客户端
+        OkHttpClient okHttpClient = new OkHttpClient();
+        // 创建一个 http 请求
+        Request request = new Request.Builder().url("https://reqres.in/api/users").get().build();
+        // Call 是一个即将准备好被执行的请求
+        Call call = okHttpClient.newCall(request);
+        // 执行请求，并定义回调函数
+        // 请求成功后数据封装在response的body里面
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                Log.e("okhttp-----失败","okhttp失败");
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                if(response.isSuccessful()){
+                    String data = response.body().string();
+
+                    // Json 数据解析
+                    /*try {
+                        JSONObject jsonObject = new JSONObject(data);
+                        Log.i("okhttp-----成功","总共数量"+jsonObject.getString("total"));
+                        // data 里面是 json 数组，数组里面放的是多个 json 对象
+                        JSONArray jsonArray = jsonObject.getJSONArray("data");
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jo = jsonArray.getJSONObject(i); // 获取数组中的第 i 个对象
+                            String text1 = jo.getString("email");
+                            Log.i("okhttp-----成功--邮箱","邮箱"+text1);
+                        }
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }*/
+
+                    // Gson解析json数据
+                    Gson gson = new Gson();
+                    OneJsonBean  oneJsonBean = gson.fromJson(data, OneJsonBean.class);
+                    Log.e("okhttp-----成功--数据转换成对象",oneJsonBean.toString());
+
+                }
+            }
+        });
+    }
+
+    public void toLearnOKhttpPost(View view){
+        // 创建一个 OKhttp 客户端
+        OkHttpClient okHttpClient = new OkHttpClient();
+        // 创建一个 http 请求
+        RequestBody body = new FormBody.Builder().add("username","akshfalwhfaina").add("password","123456").build();
+        Request request = new Request.Builder().url("https://www.wanandroid.com/user/login").post(body).build();
+        Call call = okHttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                Log.e("okhttp-----post失败",e.toString());
+
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                Log.e("okhttp-----post成功",response.toString());
+            }
+        });
     }
 
 }
