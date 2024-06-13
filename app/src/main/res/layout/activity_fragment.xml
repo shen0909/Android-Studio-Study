@@ -61,7 +61,11 @@
             android:layout_marginRight="10dp"
             android:onClick="commit"
             android:text="Activity向Fragment传值-通过Bundle" />
-
+        <TextView
+            android:id="@+id/a_f_handle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Activity Fragment使用Handle传递数据"/>
     </LinearLayout>
 
 

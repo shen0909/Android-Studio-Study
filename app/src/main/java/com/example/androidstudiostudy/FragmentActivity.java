@@ -1,20 +1,33 @@
 package com.example.androidstudiostudy;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.TextView;
 
 // 创建一个新的activity 绑定布局 R.layout.activity_fragment ,在该布局里添加 fragment 控件，进行展示
 public class FragmentActivity extends AppCompatActivity implements Fragment2.CommitData{
+    Handler oneHandle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment);
 
+        oneHandle = new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(@NonNull Message msg) {
+                System.out.println("Activity Fragment使用Handle传递数据");
+                TextView textView = findViewById(R.id.a_f_handle);
+                textView.setText("传递了:"+msg.what);
+                return false;
+            }
+        });
         // 用Java代码添加fragment
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -31,6 +44,7 @@ public class FragmentActivity extends AppCompatActivity implements Fragment2.Com
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Fragment1 newFragment = new Fragment1();
+        newFragment.setOneHandle(this.oneHandle);
         fragmentTransaction.replace(R.id.fragment2,newFragment);
         fragmentTransaction.commit();
     }
