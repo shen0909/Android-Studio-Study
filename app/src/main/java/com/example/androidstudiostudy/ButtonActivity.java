@@ -20,6 +20,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.PopupWindow;
 import android.widget.Toast;
+
+import com.example.androidstudiostudy.asyncTask.liveDataExample;
 import com.example.androidstudiostudy.data.DataBean;
 import com.example.androidstudiostudy.data.OneJsonBean;
 import com.example.androidstudiostudy.data.Student;
@@ -38,6 +40,14 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //在这里开始异步操作
+        liveDataExample liveDataExample = new liveDataExample();
+        liveDataExample.startThread(new liveDataExample.listener() {
+            @Override
+            public void deal(String data) {
+                Log.e("异步操作",data);
+            }
+        });
         setContentView(R.layout.activity_button);
         /* Java知识补充-内部类
          **定义在类的内部的类
