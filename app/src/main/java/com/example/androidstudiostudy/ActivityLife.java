@@ -7,7 +7,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.androidstudiostudy.UI.ConstraintActivity;
+import com.example.androidstudiostudy.UI.DialogActivity;
 import com.example.androidstudiostudy.data.Student;
+import com.example.androidstudiostudy.fragment.FragmentActivity;
 
 public class ActivityLife extends AppCompatActivity {
 
@@ -98,7 +102,7 @@ public class ActivityLife extends AppCompatActivity {
     public void toJump(View view) {
         int id = view.getId();
         if (id== R.id.btt1) {
-            Intent intent = new Intent(this,ConstraintActivity.class);
+            Intent intent = new Intent(this, ConstraintActivity.class);
             startActivity(intent);
         }
         // 观察打开普通对话框生命周期的变化
@@ -113,7 +117,7 @@ public class ActivityLife extends AppCompatActivity {
         /* 1.创建一个 activity，和创建意图跳转
          * 2.在清单文件中设置当前activity的风格为对话框风格*/
         else if (id == R.id.btt3) {
-            Intent intent2 = new Intent(this,DialogActivity.class);
+            Intent intent2 = new Intent(this, DialogActivity.class);
             startActivity(intent2);
         }
         // 跳转去看fragment

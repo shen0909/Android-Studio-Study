@@ -1,4 +1,4 @@
-package com.example.androidstudiostudy;
+package com.example.androidstudiostudy.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.util.Log;
 import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.ToggleButton;
+
+import com.example.androidstudiostudy.R;
 
 public class RadioButtonActivity extends AppCompatActivity {
 

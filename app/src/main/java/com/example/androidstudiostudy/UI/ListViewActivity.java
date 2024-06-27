@@ -1,4 +1,4 @@
-package com.example.androidstudiostudy;
+package com.example.androidstudiostudy.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +12,8 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import com.example.androidstudiostudy.adapter.MyBaseAdapter;
+import com.example.androidstudiostudy.R;
 import com.example.androidstudiostudy.data.BaseMsg;
 
 import java.util.ArrayList;

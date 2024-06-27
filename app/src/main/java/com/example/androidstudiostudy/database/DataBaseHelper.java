@@ -1,4 +1,4 @@
-package com.example.androidstudiostudy;
+package com.example.androidstudiostudy.database;
 
 import android.content.ContentValues;
 import android.content.Context;

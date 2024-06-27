@@ -21,10 +21,19 @@ import android.widget.Button;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
-import com.example.androidstudiostudy.asyncTask.liveDataExample;
+import com.example.androidstudiostudy.UI.ConstraintActivity;
+import com.example.androidstudiostudy.UI.ListViewActivity;
+import com.example.androidstudiostudy.UI.MyDialog;
+import com.example.androidstudiostudy.UI.MyRecycleView;
+import com.example.androidstudiostudy.UI.TabLayoutActivity;
+import com.example.androidstudiostudy.UI.ViewPage2Activity;
+import com.example.androidstudiostudy.async.HandleActivity;
+import com.example.androidstudiostudy.async.TimerActivity;
+import com.example.androidstudiostudy.async.liveDataExample;
 import com.example.androidstudiostudy.data.DataBean;
 import com.example.androidstudiostudy.data.OneJsonBean;
 import com.example.androidstudiostudy.data.Student;
+import com.example.androidstudiostudy.database.LoginWithSqlite;
 import com.google.gson.Gson;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -246,7 +255,7 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
         }
         // 点击跳转去学习TabLayout 页面切换
         else if (id == R.id.toLook_TabLayout) {
-            startActivity(new Intent(this,TabLayoutActivity.class));
+            startActivity(new Intent(this, TabLayoutActivity.class));
         }
         // Gson 解析
         else if (id == R.id.gson) {
@@ -258,12 +267,12 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
         }
         // 计时器案例
         else if(id == R.id.timer){
-            Intent intent = new Intent(this,TimerActivity.class);
+            Intent intent = new Intent(this, TimerActivity.class);
             startActivity(intent);
         }
         // 去学习 recycleView
         else if(id == R.id.recycleView){
-            Intent intent = new Intent(this,MyRecycleView.class);
+            Intent intent = new Intent(this, MyRecycleView.class);
             startActivity(intent);
         }
         // 去学习数据库

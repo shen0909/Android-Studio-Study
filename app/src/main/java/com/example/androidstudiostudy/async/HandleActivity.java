@@ -1,4 +1,4 @@
-package com.example.androidstudiostudy;
+package com.example.androidstudiostudy.async;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +9,8 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.androidstudiostudy.R;
 import com.example.androidstudiostudy.data.DataBean;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

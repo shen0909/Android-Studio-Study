@@ -1,4 +1,4 @@
-package com.example.androidstudiostudy;
+package com.example.androidstudiostudy.adapter;
 
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.androidstudiostudy.R;
 
 // 创建 RecyclerView适配器
 /* 1. 新建一个类继承 RecyclerView.Adapter<VH>的Adapter类（VH是ViewHolder的类名） ---- MyRecycleViewAdapter

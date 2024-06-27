@@ -1,4 +1,4 @@
-package com.example.androidstudiostudy.asyncTask;
+package com.example.androidstudiostudy.async;
 
 import android.os.SystemClock;
 

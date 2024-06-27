@@ -1,4 +1,4 @@
-package com.example.androidstudiostudy;
+package com.example.androidstudiostudy.async;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +9,8 @@ import android.os.Message;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.androidstudiostudy.R;
 
 public class TimerActivity extends AppCompatActivity {
 

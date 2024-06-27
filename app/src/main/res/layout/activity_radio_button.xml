@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".RadioButtonActivity">
+    tools:context=".UI.RadioButtonActivity">
     <!-- 单选控件 在一个 RadioGroup 中只能选中一个 -->
     <RadioGroup
         android:layout_width="match_parent"

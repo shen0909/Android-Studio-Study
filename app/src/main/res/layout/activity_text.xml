@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TextActivity">
+    tools:context=".UI.TextActivity">
     <!--
         设置字体大小：android:textSize="20sp" 用sp
         设置颜色：android:textColor="#00ffff"
