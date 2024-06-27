@@ -17,6 +17,19 @@
         android:theme="@style/Theme.AndroidStudioStudy"
         tools:targetApi="31">
         <activity
+            android:name=".service.StudyService"
+            android:exported="false" />
+        <activity
+            android:name=".service.studyService"
+            android:exported="false" />
+
+        <service
+            android:name=".service.OneService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission=".service.OneService" />
+
+        <activity
             android:name=".database.LoginWithSqlite"
             android:exported="false" />
         <activity

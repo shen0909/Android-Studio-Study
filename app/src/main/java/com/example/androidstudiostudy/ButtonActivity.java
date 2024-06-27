@@ -34,6 +34,7 @@ import com.example.androidstudiostudy.data.DataBean;
 import com.example.androidstudiostudy.data.OneJsonBean;
 import com.example.androidstudiostudy.data.Student;
 import com.example.androidstudiostudy.database.LoginWithSqlite;
+import com.example.androidstudiostudy.service.StudyService;
 import com.google.gson.Gson;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -278,6 +279,10 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
         // 去学习数据库
         else if(id == R.id.toStudySqlite){
             startActivity(new Intent(this, LoginWithSqlite.class));
+        }
+        // 去学习service
+        else if (id == R.id.toservice) {
+            startActivity(new Intent(this, StudyService.class));
         }
     }
 
