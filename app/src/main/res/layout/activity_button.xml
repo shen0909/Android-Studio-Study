@@ -221,6 +221,13 @@
             android:layout_marginTop="20dp"
             android:onClick="popAlert"
             android:text="学习service" />
+        <Button
+            android:id="@+id/toservicewithMessenger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onClick="popAlert"
+            android:text="学习servicewithMessenger" />
     </LinearLayout>
 
 
