@@ -2,10 +2,12 @@ package com.example.androidstudiostudy.service;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
+import android.os.RemoteException;
 import android.util.Log;
 import androidx.annotation.NonNull;
 
@@ -14,16 +16,24 @@ public class MessengerService extends Service {
     private static final String TAG = "MessengerService";
 
     // 用于接收从客户端传递过来的数据
-    class ServiceReciveHandle extends Handler {
+    private static class ServiceReciveHandle extends Handler {
         @Override
         public void handleMessage(@NonNull Message msg) {
-            switch (msg.what) {
-                case MSG_SAY_HELLO:
-                    Log.i(TAG, "服务器接收到来自客户端的消息");
+            if (msg.what == MSG_SAY_HELLO) {
+                Log.i(TAG, "服务器接收到来自客户端的消息");
 
-                    break;
-                default:
-                    super.handleMessage(msg);
+                Messenger replyMessenger = msg.replyTo;
+                Message replyMessenge = Message.obtain(null, MessengerService.MSG_SAY_HELLO);
+                Bundle bundle=new Bundle();
+                bundle.putString("reply","ok~,I had receiver message from you! ");
+                replyMessenge.setData(bundle);
+                try {
+                    replyMessenger.send(replyMessenge);
+                } catch (RemoteException e) {
+                    throw new RuntimeException(e);
+                }
+            } else {
+                super.handleMessage(msg);
             }
 
         }

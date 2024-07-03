@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
@@ -12,11 +13,13 @@ import android.os.RemoteException;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.androidstudiostudy.R;
 
 public class MessengerServiceActivity extends AppCompatActivity {
     private static final String TAG = "MessengerService-Activity";
+    private Button sendMsg, bindService, unbindService, createService, destoryService;
 
     // 与服务端交互的Messenger
     private Messenger myService = null;
@@ -41,7 +44,21 @@ public class MessengerServiceActivity extends AppCompatActivity {
         }
     };
 
-    private Button sendMsg, bindService, unbindService, createService, destoryService;
+    // 用于接受从服务器端返回的消息
+    private final Messenger activityRecevierMessenger = new Messenger(new activityRecevierHandler());
+
+    private static class activityRecevierHandler extends Handler{
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            if (msg.what == MessengerService.MSG_SAY_HELLO) {
+                Log.i(TAG, "客户端接收到来自服务的消息" + msg.getData().getString("reply"));
+            } else {
+                super.handleMessage(msg);
+            }
+
+        }
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +71,8 @@ public class MessengerServiceActivity extends AppCompatActivity {
                 if (!mBound)
                     return;
                 Message msg = Message.obtain(null, MessengerService.MSG_SAY_HELLO, 0, 0);
+                // 把接收服务器端的回复的Messenger通过Message的replyTo参数传递给服务端
+                msg.replyTo =activityRecevierMessenger;
                 try {
                     // 发送消息
                     myService.send(msg);
