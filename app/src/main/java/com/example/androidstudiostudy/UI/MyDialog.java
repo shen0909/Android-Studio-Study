@@ -1,9 +1,11 @@
-package com.example.androidstudiostudy;
+package com.example.androidstudiostudy.UI;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.view.View;
 import androidx.annotation.NonNull;
+
+import com.example.androidstudiostudy.R;
 
 // 创建一个自定义对话框类
 public class MyDialog extends Dialog {

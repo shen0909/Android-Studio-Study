@@ -1,9 +1,12 @@
-package com.example.androidstudiostudy;
+package com.example.androidstudiostudy.UI;
 
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
+
+import com.example.androidstudiostudy.R;
+import com.example.androidstudiostudy.adapter.TabViewFragAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class TabLayoutActivity extends AppCompatActivity {

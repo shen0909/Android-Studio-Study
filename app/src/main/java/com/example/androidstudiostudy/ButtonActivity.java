@@ -30,9 +30,22 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import com.example.androidstudiostudy.UI.ConstraintActivity;
+import com.example.androidstudiostudy.UI.ListViewActivity;
+import com.example.androidstudiostudy.UI.MyDialog;
+import com.example.androidstudiostudy.UI.MyRecycleView;
+import com.example.androidstudiostudy.UI.TabLayoutActivity;
+import com.example.androidstudiostudy.UI.ViewPage2Activity;
+import com.example.androidstudiostudy.async.HandleActivity;
+import com.example.androidstudiostudy.async.TimerActivity;
+import com.example.androidstudiostudy.async.liveDataExample;
 import com.example.androidstudiostudy.data.DataBean;
 import com.example.androidstudiostudy.data.OneJsonBean;
 import com.example.androidstudiostudy.data.Student;
+import com.example.androidstudiostudy.database.LoginWithSqlite;
+import com.example.androidstudiostudy.service.MessengerServiceActivity;
+import com.example.androidstudiostudy.service.StudyService;
 import com.example.androidstudiostudy.dataStorage.spActivity;
 import com.google.gson.Gson;
 
@@ -67,6 +80,14 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //在这里开始异步操作
+        liveDataExample liveDataExample = new liveDataExample();
+        liveDataExample.startThread(new liveDataExample.listener() {
+            @Override
+            public void deal(String data) {
+                Log.e("异步操作",data);
+            }
+        });
         setContentView(R.layout.activity_button);
         /* Java知识补充-内部类
          **定义在类的内部的类
@@ -267,7 +288,7 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
         }
         // 点击跳转去学习TabLayout 页面切换
         else if (id == R.id.toLook_TabLayout) {
-            startActivity(new Intent(this,TabLayoutActivity.class));
+            startActivity(new Intent(this, TabLayoutActivity.class));
         }
         // Gson 解析
         else if (id == R.id.gson) {
@@ -284,7 +305,7 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
         }
         // 去学习 recycleView
         else if(id == R.id.recycleView){
-            Intent intent = new Intent(this,MyRecycleView.class);
+            Intent intent = new Intent(this, MyRecycleView.class);
             startActivity(intent);
         }
         // 去学习数据库
@@ -293,6 +314,14 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
         }
         else if(id == R.id.toStudySp){
             startActivity(new Intent(this, spActivity.class));
+        }
+        // 去学习service
+        else if (id == R.id.toservice) {
+            startActivity(new Intent(this, StudyService.class));
+        }
+        // 去学习MessengerService
+        else if (id == R.id.toservicewithMessenger) {
+            startActivity(new Intent(this, MessengerServiceActivity.class));
         }
     }
 

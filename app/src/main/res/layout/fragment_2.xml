@@ -6,7 +6,7 @@
     android:background="#673AB7"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".Fragment2">
+    tools:context=".fragment.Fragment2">
 
     <!-- TODO: Update blank fragment layout -->
 

@@ -1,14 +1,13 @@
-package com.example.androidstudiostudy;
+package com.example.androidstudiostudy.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-
-public class TextActivity extends AppCompatActivity {
+// 用于打开界面对话框，此时没有布局文件，只是演示
+public class DialogActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_text2);
     }
 }

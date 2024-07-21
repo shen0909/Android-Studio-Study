@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ProgressBarActivyty">
+    tools:context=".UI.ProgressBarActivyty">
     <!--
     ProgressBar 的默认形式是转圈圈
     style="?android:attr/progressBarStyleHorizontal" style 设置风格

@@ -24,6 +24,19 @@
             android:exported="false" />
         <activity
             android:name=".LoginWithSqlite"
+            android:name=".service.MessengerServiceActivity"
+            android:exported="false" />
+
+        <service
+            android:name=".service.MessengerService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name=".service.StudyService"
+            android:exported="false" />
+        <activity
+            android:name=".service.studyService"
             android:exported="false" />
         <activity
             android:name=".MyRecycleView"

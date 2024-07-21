@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".service.MessengerServiceActivity">
+
+
+    <Button
+        android:id="@+id/bindMessengerService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="绑定MessengerService"
+        tools:layout_editor_absoluteX="49dp"
+        tools:layout_editor_absoluteY="60dp" />
+
+    <Button
+        android:id="@+id/unbindMessengerService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="不绑定MessengerService"
+        tools:layout_editor_absoluteX="49dp"
+        tools:layout_editor_absoluteY="60dp" />
+
+    <Button
+        android:id="@+id/startMessengerService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="启动MessengerService"
+        tools:layout_editor_absoluteX="49dp"
+        tools:layout_editor_absoluteY="60dp" />
+
+    <Button
+        android:id="@+id/destoreyMessengerService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="销毁MessengerService"
+        tools:layout_editor_absoluteX="49dp"
+        tools:layout_editor_absoluteY="60dp" />
+
+    <Button
+        android:id="@+id/sendMessageToService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="发送消息给服务端"
+        tools:layout_editor_absoluteX="49dp"
+        tools:layout_editor_absoluteY="60dp" />
+</LinearLayout>

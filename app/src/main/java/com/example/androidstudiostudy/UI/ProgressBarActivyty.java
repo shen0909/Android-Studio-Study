@@ -1,7 +1,9 @@
-package com.example.androidstudiostudy;
+package com.example.androidstudiostudy.UI;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ProgressBar;
+
+import com.example.androidstudiostudy.R;
 
 public class ProgressBarActivyty extends AppCompatActivity {
     @Override

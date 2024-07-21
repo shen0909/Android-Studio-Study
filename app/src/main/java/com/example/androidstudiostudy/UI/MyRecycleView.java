@@ -1,12 +1,14 @@
-package com.example.androidstudiostudy;
+package com.example.androidstudiostudy.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.LinearLayout;
+
+import com.example.androidstudiostudy.R;
+import com.example.androidstudiostudy.adapter.MyRecycleViewAdapter;
 
 public class MyRecycleView extends AppCompatActivity {
 
