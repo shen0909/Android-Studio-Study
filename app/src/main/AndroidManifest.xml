@@ -23,8 +23,7 @@
             android:name=".ComponentActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginWithSqlite"
-            android:name=".service.MessengerServiceActivity"
+            android:name=".database.LoginWithSqlite"
             android:exported="false" />
 
         <service
@@ -36,16 +35,16 @@
             android:name=".service.StudyService"
             android:exported="false" />
         <activity
-            android:name=".service.studyService"
+            android:name=".service.MessengerServiceActivity"
             android:exported="false" />
         <activity
-            android:name=".MyRecycleView"
+            android:name=".UI.MyRecycleView"
             android:exported="false" />
         <activity
-            android:name=".TimerActivity"
+            android:name=".async.TimerActivity"
             android:exported="false" />
         <activity
-            android:name=".HandleActivity"
+            android:name=".async.HandleActivity"
             android:exported="false" />
         <activity
             android:name=".JsonActivity"
@@ -56,19 +55,19 @@
             android:resource="@xml/network_security_config" />
 
         <activity
-            android:name=".TabLayoutActivity"
+            android:name=".UI.TabLayoutActivity"
             android:exported="false" />
         <activity
-            android:name=".ViewPage2Activity"
+            android:name=".UI.ViewPage2Activity"
             android:exported="false" />
         <activity
-            android:name=".ListViewActivity"
+            android:name=".UI.ListViewActivity"
             android:exported="false" />
         <activity
-            android:name=".FragmentActivity"
+            android:name=".fragment.FragmentActivity"
             android:exported="false" />
         <activity
-            android:name=".DialogActivity"
+            android:name=".UI.DialogActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Dialog" />
         <activity
@@ -81,22 +80,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ConstraintActivity"
+            android:name=".UI.ConstraintActivity"
             android:exported="false" />
         <activity
-            android:name=".checkBoxActivity"
+            android:name=".UI.checkBoxActivity"
             android:exported="false" />
         <activity
             android:name=".ButtonActivity"
             android:exported="false" />
         <activity
-            android:name=".ProgressBarActivyty"
+            android:name=".UI.ProgressBarActivyty"
             android:exported="false" />
         <activity
-            android:name=".RadioButtonActivity"
+            android:name=".UI.RadioButtonActivity"
             android:exported="false" />
         <activity
-            android:name=".TextActivity"
+            android:name=".UI.TextActivity"
             android:exported="false" /> <!-- android:launchMode="standard" 标准启动模式 -->
         <activity
             android:name=".MainActivity"

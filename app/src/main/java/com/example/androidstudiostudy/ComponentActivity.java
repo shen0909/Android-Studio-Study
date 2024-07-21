@@ -1,10 +1,13 @@
 package com.example.androidstudiostudy;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import com.example.androidstudiostudy.UI.ProgressBarActivyty;
+import com.example.androidstudiostudy.UI.RadioButtonActivity;
+import com.example.androidstudiostudy.UI.TextActivity;
+import com.example.androidstudiostudy.UI.checkBoxActivity;
 
 public class ComponentActivity extends AppCompatActivity {
 
@@ -17,16 +20,16 @@ public class ComponentActivity extends AppCompatActivity {
     public void toJumpPage(View view) {
         int id = view.getId();
         if(id == R.id.toLookTV){
-            Intent intent = new Intent(this,TextActivity.class);
+            Intent intent = new Intent(this, TextActivity.class);
             startActivity(intent);
         } else if (id == R.id.toLookCheck) {
-            Intent intent = new Intent(this,checkBoxActivity.class);
+            Intent intent = new Intent(this, checkBoxActivity.class);
             startActivity(intent);
         }else if (id == R.id.toLookRadio) {
-            Intent intent = new Intent(this,RadioButtonActivity.class);
+            Intent intent = new Intent(this, RadioButtonActivity.class);
             startActivity(intent);
         }else if (id == R.id.toLookProgress) {
-            Intent intent = new Intent(this,ProgressBarActivyty.class);
+            Intent intent = new Intent(this, ProgressBarActivyty.class);
             startActivity(intent);
         }
     }
