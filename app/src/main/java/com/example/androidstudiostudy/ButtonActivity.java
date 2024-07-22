@@ -30,6 +30,7 @@ import com.example.androidstudiostudy.UI.ViewPage2Activity;
 import com.example.androidstudiostudy.async.HandleActivity;
 import com.example.androidstudiostudy.async.TimerActivity;
 import com.example.androidstudiostudy.async.liveDataExample;
+import com.example.androidstudiostudy.broadcastreceiver.BroadcastStudy;
 import com.example.androidstudiostudy.data.DataBean;
 import com.example.androidstudiostudy.data.OneJsonBean;
 import com.example.androidstudiostudy.data.Student;
@@ -288,6 +289,10 @@ public class ButtonActivity extends AppCompatActivity implements View.OnClickLis
         // 去学习MessengerService
         else if (id == R.id.toservicewithMessenger) {
             startActivity(new Intent(this, MessengerServiceActivity.class));
+        }
+        // 去学习广播接收器
+        else if (id == R.id.tostudyBroadcast) {
+            startActivity(new Intent(this, BroadcastStudy.class));
         }
     }
 
