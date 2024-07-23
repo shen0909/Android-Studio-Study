@@ -7,21 +7,25 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import com.example.androidstudiostudy.R;
+import com.example.androidstudiostudy.broadcastreceiver.receiver.LocalBroadcastReceiver;
 
 public class BroadcastStudy extends AppCompatActivity {
 
     public String SEND_STATIC_ACTION = "send_static_action";
     public String SEND_DYNAMIC_ACTION = "send_dynamic_action";
+    public String SEND_LOCAL_ACTION = "send_local_action";
+    public String SEND_GLOBAL_ACTION = "send_global_action";
+    private LocalBroadcastManager localBroadcastManager ;
+    private final LocalBroadcastReceiver localBroadcastReceiver = new LocalBroadcastReceiver(); // 本地广播接收器
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_broadcast_study);
-
+        localBroadcastManager = LocalBroadcastManager.getInstance(this);
         // 动态注册广播接收器
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(SEND_DYNAMIC_ACTION);
@@ -35,6 +39,10 @@ public class BroadcastStudy extends AppCompatActivity {
         intentFilter1.setPriority(101);
         registerReceiver(broadcastReceiver2, intentFilter1);
 
+        // 注册本地广播 - 只能动态注册
+        IntentFilter local_intentFilter = new IntentFilter();
+        local_intentFilter.addAction(SEND_LOCAL_ACTION);
+        localBroadcastManager.registerReceiver(localBroadcastReceiver,local_intentFilter);
     }
 
     // 创建广播接收器
@@ -82,6 +90,18 @@ public class BroadcastStudy extends AppCompatActivity {
             // 发送有序广播
             sendOrderedBroadcast(intent, null);
         }
+        if (view.getId() == R.id.send_local) {
+            Intent intent = new Intent();
+            intent.setAction(SEND_LOCAL_ACTION);
+            intent.putExtra("data", "本地广播");
+            localBroadcastManager.sendBroadcast(intent);
+        }
+        if (view.getId() == R.id.send_global) {
+            Intent intent = new Intent();
+            intent.setAction(SEND_GLOBAL_ACTION);
+            intent.putExtra("data_global", "发送了一条全局广播");
+            sendBroadcast(intent);
+        }
     }
 
     @Override
@@ -89,5 +109,6 @@ public class BroadcastStudy extends AppCompatActivity {
         super.onDestroy();
         unregisterReceiver(dynamicBroadcastReceiver);
         unregisterReceiver(broadcastReceiver2);
+        localBroadcastManager.unregisterReceiver(localBroadcastReceiver);
     }
 }

@@ -21,4 +21,18 @@
         android:layout_height="wrap_content"
         android:onClick="sendBroadcast"
         android:text="发送动态广播" />
+
+    <Button
+        android:id="@+id/send_local"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="sendBroadcast"
+        android:text="发送本地广播" />
+
+    <Button
+        android:id="@+id/send_global"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="sendBroadcast"
+        android:text="发送全局广播" />
 </LinearLayout>
