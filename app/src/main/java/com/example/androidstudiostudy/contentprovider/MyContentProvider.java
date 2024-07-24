@@ -83,5 +83,5 @@ public class MyContentProvider extends ContentProvider {
             return null;
         }
     }
-    
+
 }
