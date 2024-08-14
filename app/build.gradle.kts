@@ -1,10 +1,11 @@
 plugins {
     id("com.android.application")
+    id("org.jetbrains.kotlin.android") version "1.8.22" // 这里添加Kotlin插件
 }
 
 android {
     namespace = "com.example.androidstudiostudy"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.androidstudiostudy"
@@ -41,4 +42,7 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    // 添加 Kotlin 标准库依赖
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.22")
+
 }

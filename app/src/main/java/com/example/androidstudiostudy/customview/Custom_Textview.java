@@ -32,6 +32,7 @@ public class Custom_Textview extends View {
     }
 
     // 自定义view的测量方法，用于测量 View 大小的重要方法。在这个方法中，你需要根据传入的宽度和高度测量规格，计算并设置 View 的宽度和高度。
+    // int widthMeasureSpec, int heightMeasureSpec 是父类传过来的
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
