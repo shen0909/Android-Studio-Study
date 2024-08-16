@@ -16,7 +16,8 @@
         <com.example.androidstudiostudy.customview.Custom_Textview
             app:custom_text = "自定义文本"
             app:custom_textColor = "@color/p6"
-            app:custom_textSize = "14sp"
+            app:custom_textSize = "20sp"
+            android:background="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
