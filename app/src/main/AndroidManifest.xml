@@ -17,13 +17,29 @@
         android:theme="@style/Theme.AndroidStudioStudy"
         tools:targetApi="31">
         <activity
-            android:name=".dataStorage.spActivity"
+            android:name=".customview.CustomView"
             android:exported="false" />
+
+        <provider
+            android:name=".contentprovider.MyContentProvider"
+            android:authorities="com.example.androidstudiostydy.provider"
+            android:enabled="true"
+            android:exported="true" />
+
         <activity
-            android:name=".ComponentActivity"
+            android:name=".broadcastreceiver.BroadcastStudy"
             android:exported="false" />
+
+        <receiver
+            android:name=".broadcastreceiver.receiver.StaticBroadcastReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="send_static_action" />
+            </intent-filter>
+        </receiver>
+
         <activity
-            android:name=".database.LoginWithSqlite"
+            android:name=".service.MessengerServiceActivity"
             android:exported="false" />
 
         <service
@@ -34,8 +50,15 @@
         <activity
             android:name=".service.StudyService"
             android:exported="false" />
+
+        <service
+            android:name=".service.OneService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission=".service.OneService" />
+
         <activity
-            android:name=".service.MessengerServiceActivity"
+            android:name=".database.LoginWithSqlite"
             android:exported="false" />
         <activity
             android:name=".UI.MyRecycleView"

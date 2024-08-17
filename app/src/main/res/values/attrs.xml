@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- name：自定义view的名字-->
+    <declare-styleable name="CustomTextview">
+        <!-- name:属性名称 format:格式-->
+        <attr name="custom_text" format="string"/>
+        <attr name="custom_textColor" format="color"/>
+        <!-- 字体大小格式：dimension-->
+        <attr name="custom_textSize" format="dimension"/>
+        <!-- background:自定义view都是继承自view 所以不用自定义管理-->
+        <attr name="custom_background" format="reference|color"/>
+        <attr name="custom_inputType">
+            <enum name="number" value="1"/>
+            <enum name="string" value="2"/>、
+        </attr>
+    </declare-styleable>
+</resources>

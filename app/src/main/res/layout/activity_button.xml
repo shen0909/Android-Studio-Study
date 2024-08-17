@@ -215,6 +215,7 @@
             android:onClick="popAlert"
             android:text="去学习数据库" />
 
+
         <Button
             android:id="@+id/toStudySp"
             android:layout_width="wrap_content"
@@ -261,6 +262,7 @@
             android:layout_marginTop="20dp"
             android:onClick="popAlert"
             android:text="学习service" />
+
         <Button
             android:id="@+id/toservicewithMessenger"
             android:layout_width="wrap_content"
@@ -268,6 +270,22 @@
             android:layout_marginTop="20dp"
             android:onClick="popAlert"
             android:text="学习servicewithMessenger" />
+
+        <Button
+            android:id="@+id/tostudyBroadcast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onClick="popAlert"
+            android:text="学习广播接收器" />
+
+        <Button
+            android:id="@+id/tostudyView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onClick="popAlert"
+            android:text="学习自定义view" />
     </LinearLayout>
 
 

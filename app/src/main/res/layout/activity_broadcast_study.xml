@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".broadcastreceiver.BroadcastStudy">
+
+    <Button
+        android:id="@+id/send_static"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="sendBroadcast"
+        android:text="发送静态广播" />
+
+    <Button
+        android:id="@+id/send_dynamic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="sendBroadcast"
+        android:text="发送动态广播" />
+
+    <Button
+        android:id="@+id/send_local"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="sendBroadcast"
+        android:text="发送本地广播" />
+
+    <Button
+        android:id="@+id/send_global"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="sendBroadcast"
+        android:text="发送全局广播" />
+</LinearLayout>
