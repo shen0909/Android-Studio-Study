@@ -86,7 +86,7 @@ public class Custom_Textview extends View {
 
         // 计算宽度
         // 1. 确定的值，这时候不需要计算，给多少是多少
-        width = MeasureSpec.getSize(widthMeasureSpec);
+        width = MeasureSpec.getSize(widthMeasureSpec) + getPaddingLeft() + getPaddingRight();
 
         // 2.给的是wrap_content 需要计算
         if (widthMode == MeasureSpec.AT_MOST) {
@@ -96,7 +96,7 @@ public class Custom_Textview extends View {
             // Android的Rect类是形成一个矩形的区域。区域在Android整个界面中的位置由left,top,right,bottom数值来控制.
             Rect bounds = new Rect();
             myPaint.getTextBounds(text, 0, text.length(), bounds); // 获取文本的rect
-            width = bounds.width();
+            width = bounds.width() + getPaddingLeft() + getPaddingRight();
 
         } else if (widthMode == MeasureSpec.EXACTLY) {
             Log.e("测量模式", "EXACTLY");
@@ -106,13 +106,13 @@ public class Custom_Textview extends View {
 
         // 计算高度
         // 1. 确定的值，这时候不需要计算，给多少是多少
-        height = MeasureSpec.getSize(heightMeasureSpec);
+        height = MeasureSpec.getSize(heightMeasureSpec) + getPaddingBottom() + getPaddingTop();
 
         // 2.给的是wrap_content 需要计算
         if (heightMode == MeasureSpec.AT_MOST) {
             Rect bounds = new Rect();
             myPaint.getTextBounds(text, 0, text.length(), bounds); // 获取文本的rect
-            height = bounds.height();
+            height = bounds.height() + getPaddingBottom() + getPaddingTop();
         }
 
         // 设置控件的宽高
@@ -127,13 +127,15 @@ public class Custom_Textview extends View {
         // 绘制文本
         /* 参数---- text:文本 x:开始的位置 y:基线 paint:画笔*/
         // 如何计算基线？
-        // top: baseLine到顶部的距离 bottom：baseLine到底部的距离 高度的一半 = （top-bottom）/2
+        // top: baseLine到文字顶部的距离 bottom：baseLine到文字 底部的距离 高度的一半 = （top-bottom）/2
         // dy = 高度/2 - bottom
         int baseLine, dy;
         Paint.FontMetricsInt fontMetricsInt = myPaint.getFontMetricsInt();
         dy = (fontMetricsInt.bottom - fontMetricsInt.top) / 2 - fontMetricsInt.bottom;
         baseLine = dy + (getHeight() / 2);
-        canvas.drawText(text, 0,baseLine, myPaint);
+
+        int x = getPaddingLeft(); // 设置文本开始的位置为左侧padding值
+        canvas.drawText(text, x, baseLine, myPaint);
 
     }
 
