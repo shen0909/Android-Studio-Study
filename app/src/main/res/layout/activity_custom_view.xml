@@ -28,9 +28,11 @@
     </LinearLayout>
 
     <com.example.androidstudiostudy.customview.QQStepView
+        android:layout_gravity="center_horizontal"
         android:layout_width="300dp"
         android:layout_height="200dp"
         app:borderWidth="6dp"
+        app:stepTextSize="16sp"
         app:stepTextColor="@color/p5"
         app:innerColor="@color/p6"
         app:outerColor="@color/p3" />
