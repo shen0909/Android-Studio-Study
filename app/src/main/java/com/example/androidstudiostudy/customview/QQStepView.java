@@ -16,15 +16,16 @@ import com.example.androidstudiostudy.R;
 /* 1.设置自定义属性，编写attrs.xml
  * 2.在布局中获取自定义属性
  * 3.onMeasure()
- * 4.画弧*/
+ * 4.画弧 画文字
+ * 5.其他：如何动态*/
 public class QQStepView extends View {
     private int outerColor = Color.RED;
     private int innerColor = Color.RED;
     private int stepTextColor = Color.RED;
     private int stepTextSize = 15;
     private int borderWidth = 15;
-    private int stepMax = 100;
-    private int currentStep = 90;
+    private int stepMax;
+    private int currentStep;
     private Paint outPaint, innerPaint, textPaint;
 
     public QQStepView(Context context) {
@@ -101,7 +102,7 @@ public class QQStepView extends View {
         canvas.drawArc(rectF, 135, innerAngle * 270, false, innerPaint);
 
         // 画文字
-        String currentStepStr = "" + currentStep + "";
+        String currentStepStr = "" + currentStep;
         Rect textRect = new Rect();
         textPaint.getTextBounds(currentStepStr, 0, currentStepStr.length(), textRect);
         int dx = getWidth() / 2 - textRect.width() / 2;
@@ -109,5 +110,15 @@ public class QQStepView extends View {
         int dy = (fontMetricsInt.bottom - fontMetricsInt.top) / 2 - fontMetricsInt.bottom;
         int baseLine = dy + (getHeight() / 2);
         canvas.drawText(currentStepStr, dx, baseLine, textPaint);
+    }
+
+    public void setStepMax(int stepMax) {
+        this.stepMax = stepMax;
+    }
+
+    public void setCurrentStep(int currentStep) {
+        this.currentStep = currentStep;
+        // 不断绘制 onDraw()
+        invalidate();
     }
 }
