@@ -111,6 +111,11 @@ public class Custom_Textview extends View {
         // 2.给的是wrap_content 需要计算
         if (heightMode == MeasureSpec.AT_MOST) {
             Rect bounds = new Rect();
+            // getTextBounds :检索文本边界框并存储到边界。在边界（由调用者分配）中返回包含所有字符的最小矩形，隐含原点为 (0,0)。
+            /* text 要测量的字符串
+             * start 要测量的字符串中第一个字符的索引
+             * end 超过要测量的字符串中的最后一个字符(字符串长度不-1)
+             * bounds(Rect)返回所有文本的联合边界*/
             myPaint.getTextBounds(text, 0, text.length(), bounds); // 获取文本的rect
             height = bounds.height() + getPaddingBottom() + getPaddingTop();
         }
@@ -130,6 +135,7 @@ public class Custom_Textview extends View {
         // top: baseLine到文字顶部的距离 bottom：baseLine到文字 底部的距离 高度的一半 = （top-bottom）/2
         // dy = 高度/2 - bottom
         int baseLine, dy;
+        // getFontMetricsInt 返回给定文本的字体规格值
         Paint.FontMetricsInt fontMetricsInt = myPaint.getFontMetricsInt();
         dy = (fontMetricsInt.bottom - fontMetricsInt.top) / 2 - fontMetricsInt.bottom;
         baseLine = dy + (getHeight() / 2);
