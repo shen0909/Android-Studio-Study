@@ -37,4 +37,12 @@
         app:stepTextColor="@color/p5"
         app:innerColor="@color/p6"
         app:outerColor="@color/p3" />
+
+    <com.example.androidstudiostudy.customview.OneTextTwoColor
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        app:changeColor="@color/p3"
+        app:customColor="@color/black"
+        android:text="今天是个好日子，对吧"/>
 </LinearLayout>

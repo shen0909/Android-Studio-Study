@@ -24,4 +24,10 @@
         <attr name="stepText" format="string"/>
         <attr name="currentStep" format="integer"/>
     </declare-styleable>
+
+    <declare-styleable name="OneTextTwoColor">
+        <attr name="changeColor" format="color"/>
+        <attr name="customColor" format="color"/>
+        <attr name="middle" format="integer"/>
+    </declare-styleable>
 </resources>
