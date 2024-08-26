@@ -7,7 +7,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
@@ -20,10 +19,17 @@ public class OneTextTwoColor extends TextView {
     private int customColor = Color.BLACK;
     private int changeColor = Color.BLACK;
     private Paint customPaint, changePaint;
-    private double middleNum = 0.5; //给定一个默认的中间值，用来划分
+    private float middleNum = 0.0f; //给定一个默认的中间值，用来划分
     private int baseLine; //基线
     private int text_x; // 原点x坐标
     private String text;
+    private Direction currentDirection = Direction.leftToRight;
+
+    // 设置一个枚举的朝向类
+    public enum Direction {
+        leftToRight,
+        rightToLeft
+    }
 
     public OneTextTwoColor(Context context) {
         this(context, null);
@@ -70,14 +76,24 @@ public class OneTextTwoColor extends TextView {
         // 分前后两部分绘制文字
         // 用 clipOutRect 将画布裁剪成两部分，分别用不同的画笔绘制
         int middleWidth = (int) (middleNum * getWidth());
-        canvasRect(canvas, 0, middleWidth, customPaint);
-        canvasRect(canvas, middleWidth, getWidth(), changePaint);
+
+        // 从左-右（进入），左边变色 右边不变
+        if (currentDirection == Direction.leftToRight) {
+            canvasRect(canvas, 0, middleWidth, changePaint);
+            canvasRect(canvas, middleWidth, getWidth(), customPaint);
+        }
+        // 从右-左（退出），左边不变色，右边变色
+        else if (currentDirection == Direction.rightToLeft) {
+            canvasRect(canvas, getWidth() - middleWidth, getWidth(), changePaint);
+            canvasRect(canvas, 0, getWidth() - middleWidth, customPaint);
+        }
+
     }
 
     /// 绘制裁剪区域
-    public void canvasRect(Canvas canvas, int left, int middleWidth, Paint paint) {
+    public void canvasRect(Canvas canvas, int left, int right, Paint paint) {
         canvas.save(); // 保存画布
-        canvas.clipRect(left, 0, middleWidth, getHeight());
+        canvas.clipRect(left, 0, right, getHeight());
         canvas.drawText(text, text_x, baseLine, paint);
         canvas.restore(); // 释放画布
     }
@@ -101,5 +117,16 @@ public class OneTextTwoColor extends TextView {
         int middle = (fontMetricsInt.bottom - fontMetricsInt.top) / 2;
         int dz = middle - fontMetricsInt.bottom;
         baseLine = middle + dz;
+    }
+
+    /// 设置朝向
+    public void setCurrentDirection(Direction direction) {
+        this.currentDirection = direction;
+    }
+
+    /// 设置进度
+    public void setMiddleNum(float middleNum) {
+        this.middleNum = middleNum;
+        invalidate();
     }
 }

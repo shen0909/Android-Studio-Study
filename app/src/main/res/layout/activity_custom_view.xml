@@ -39,10 +39,31 @@
         app:outerColor="@color/p3" />
 
     <com.example.androidstudiostudy.customview.OneTextTwoColor
+        android:id="@+id/two_color_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         app:changeColor="@color/p3"
         app:customColor="@color/black"
         android:text="今天是个好日子，对吧"/>
+
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_ltr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="changeLefToRight"
+            android:text="从左到右"/>
+        <Button
+            android:id="@+id/btn_rtl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="changeRightToLef"
+            android:text="从右到左"/>
+    </LinearLayout>
 </LinearLayout>
