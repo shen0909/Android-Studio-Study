@@ -66,4 +66,12 @@
             android:onClick="changeRightToLef"
             android:text="从右到左"/>
     </LinearLayout>
+
+    <Button
+        android:gravity="center_horizontal"
+        android:id="@+id/btn_change_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toLookChangeColor"
+        android:text="去看滑动变色的tab"/>
 </LinearLayout>

@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
 import com.example.androidstudiostudy.R;
@@ -45,12 +46,14 @@ public class OneTextTwoColor extends TextView {
     }
 
     private void initAttrs(Context context, AttributeSet attrs) {
+
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.OneTextTwoColor);
         changeColor = array.getColor(R.styleable.OneTextTwoColor_changeColor, Color.BLACK);
         customColor = array.getColor(R.styleable.OneTextTwoColor_customColor, Color.BLACK);
-        array.recycle(); //回收
 
         text = getText().toString();
+        Log.d("initAttrs","initAttrs"+text);
+
 
         customPaint = new Paint();
         customPaint.setColor(customColor);
@@ -61,6 +64,7 @@ public class OneTextTwoColor extends TextView {
         changePaint.setColor(changeColor);
         changePaint.setAntiAlias(true);
         changePaint.setTextSize(getTextSize());
+        array.recycle(); //回收
     }
 
     public OneTextTwoColor(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
@@ -71,6 +75,7 @@ public class OneTextTwoColor extends TextView {
     /* 1.一段文字，两种颜色，给定一个值，从此处开始划分，前后两段用不同的画笔绘制 */
     @Override
     protected void onDraw(Canvas canvas) {
+        Log.d("onDraw","onDraw"+text);
         calculateBaseLine();
 
         // 分前后两部分绘制文字
@@ -127,6 +132,24 @@ public class OneTextTwoColor extends TextView {
     /// 设置进度
     public void setMiddleNum(float middleNum) {
         this.middleNum = middleNum;
+        invalidate();
+    }
+
+    public void setCustomColor(int customColor) {
+        this.customPaint.setColor(customColor);
+    }
+
+    public void setChangeColor(int changeColor) {
+        this.changePaint.setColor(changeColor);
+    }
+
+    // 为什么 文本无法正确获取
+    // 在自定义视图的构造函数中，getText() 方法在 initAttrs 中被调用时，可能返回的是默认值或空值，
+    // 因为此时视图的文本尚未被设置。通过在 setText 方法中更新 text 变量，可以确保在设置文本后，视图能够正确使用这个值。
+    @Override
+    public void setText(CharSequence text, BufferType type) {
+        super.setText(text, type);
+        this.text = text.toString();
         invalidate();
     }
 }

@@ -2,6 +2,7 @@ package com.example.androidstudiostudy.customview;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
@@ -12,7 +13,7 @@ import com.example.androidstudiostudy.R;
 
 public class CustomView extends AppCompatActivity {
 
-    private Button btn_ltr,btn_rtl;
+    private Button btn_ltr,btn_rtl,btn_change_color;
     private OneTextTwoColor two_color_view;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class CustomView extends AppCompatActivity {
 
         btn_ltr = findViewById(R.id.btn_ltr);
         btn_rtl = findViewById(R.id.btn_rtl);
+        btn_change_color = findViewById(R.id.btn_change_color);
         two_color_view = findViewById(R.id.two_color_view);
     }
 
@@ -69,5 +71,9 @@ public class CustomView extends AppCompatActivity {
             }
         });
         valueAnimator.start();
+    }
+
+    public void toLookChangeColor(View view) {
+        startActivity(new Intent(this, SrollTabLayout.class));
     }
 }
